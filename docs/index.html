@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pointage — le pointage d'heures sur iPhone</title>
+<meta name="description" content="App iPhone de pointage des heures de travail : un bouton pour pointer, un historique, les soldes de la semaine et du mois. Compatible avec la CLI TimeTracker, aucune donnée ne quitte l'appareil.">
+<link rel="icon" type="image/png" href="images/favicon.png">
+<link rel="apple-touch-icon" href="images/icone.png">
+<style>
+  :root {
+    --bg: #ffffff;
+    --bg-alt: #f3f6f5;
+    --text: #1a2120;
+    --text-muted: #58625f;
+    --accent: #14615b;
+    --accent-contrast: #ffffff;
+    --highlight: #b86e00;
+    --border: #e1e7e5;
+    --code-bg: #0f2a2b;
+    --code-text: #e3efec;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #111615;
+      --bg-alt: #182020;
+      --text: #e9efed;
+      --text-muted: #a0aba8;
+      --accent: #4fc2b1;
+      --accent-contrast: #0a1614;
+      --highlight: #f5a524;
+      --border: #26302f;
+      --code-bg: #0a0f0f;
+      --code-text: #d9e6e3;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #111615;
+    --bg-alt: #182020;
+    --text: #e9efed;
+    --text-muted: #a0aba8;
+    --accent: #4fc2b1;
+    --accent-contrast: #0a1614;
+    --highlight: #f5a524;
+    --border: #26302f;
+    --code-bg: #0a0f0f;
+    --code-text: #d9e6e3;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.6;
+  }
+  .wrap { max-width: 860px; margin: 0 auto; padding: 0 16px; }
+
+  header.hero {
+    padding: 56px 0 40px;
+    border-bottom: 1px solid var(--border);
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 32px;
+    align-items: center;
+  }
+  @media (min-width: 720px) {
+    header.hero { grid-template-columns: 1.2fr 1fr; }
+  }
+  .titre { display: flex; align-items: center; gap: 16px; margin-bottom: 12px; }
+  .titre img { width: 72px; height: 72px; border-radius: 16px; box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18); }
+  header.hero h1 {
+    margin: 0;
+    font-size: clamp(2rem, 5vw, 2.75rem);
+    letter-spacing: -0.02em;
+  }
+  header.hero p.tagline {
+    margin: 0 0 24px;
+    color: var(--text-muted);
+    font-size: 1.15rem;
+  }
+  .statut {
+    display: inline-block;
+    margin-bottom: 20px;
+    padding: 4px 10px;
+    border-radius: 999px;
+    border: 1px solid var(--highlight);
+    color: var(--highlight);
+    font-size: 0.85rem;
+    font-weight: 600;
+  }
+
+  .buttons { display: flex; gap: 12px; flex-wrap: wrap; }
+  .btn {
+    display: inline-block;
+    padding: 10px 18px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    border: 1px solid var(--border);
+  }
+  .btn.primary { background: var(--accent); color: var(--accent-contrast); border-color: var(--accent); }
+  .btn.secondary { color: var(--text); }
+
+  .capture { justify-self: center; width: 100%; max-width: 280px; }
+  .capture img, .galerie img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 28px;
+    border: 1px solid var(--border);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+  }
+  .capture .sombre-seulement { display: none; }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) .capture .clair-seulement { display: none; }
+    :root:not([data-theme="light"]) .capture .sombre-seulement { display: block; }
+  }
+  :root[data-theme="dark"] .capture .clair-seulement { display: none; }
+  :root[data-theme="dark"] .capture .sombre-seulement { display: block; }
+
+  section { padding: 40px 0; border-bottom: 1px solid var(--border); }
+  section:last-of-type { border-bottom: none; }
+  h2 { font-size: 1.4rem; margin-bottom: 16px; }
+
+  ul.features { list-style: none; padding: 0; margin: 0; display: grid; gap: 12px; }
+  ul.features li { padding-left: 28px; position: relative; }
+  ul.features li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: 700;
+  }
+
+  .galerie { display: grid; grid-template-columns: 1fr; gap: 24px; align-items: start; }
+  @media (min-width: 640px) {
+    .galerie { grid-template-columns: 1fr 1fr; }
+  }
+  .galerie figure { margin: 0; max-width: 280px; justify-self: center; }
+  .galerie figcaption { margin-top: 10px; color: var(--text-muted); font-size: 0.9rem; text-align: center; }
+
+  pre {
+    background: var(--code-bg);
+    color: var(--code-text);
+    padding: 16px;
+    border-radius: 8px;
+    overflow-x: auto;
+    font-size: 0.85rem;
+  }
+  code { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; }
+  :not(pre) > code {
+    background: var(--bg-alt);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 0.9em;
+  }
+
+  table { width: 100%; border-collapse: collapse; margin-top: 12px; }
+  th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--border); }
+  th { color: var(--text-muted); font-weight: 600; font-size: 0.9rem; }
+
+  footer {
+    padding: 32px 0 64px;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+  }
+  footer a { color: var(--text-muted); }
+  a { color: var(--accent); }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <header class="hero">
+      <div>
+        <div class="titre">
+          <img src="images/icone.png" alt="" width="72" height="72">
+          <h1>Pointage</h1>
+        </div>
+        <p class="tagline">Un bouton pour pointer ses heures de travail, et les soldes de la semaine et du mois toujours à jour.</p>
+        <span class="statut">En test sur TestFlight</span>
+        <div class="buttons">
+          <a class="btn primary" href="https://github.com/ymauray/timetracker.ios">Voir le code source</a>
+          <a class="btn secondary" href="confidentialite.html">Confidentialité</a>
+        </div>
+      </div>
+      <div class="capture">
+        <img class="clair-seulement" src="images/pointer.png" alt="L'écran Pointer : une journée terminée, avec ses quatre pointages et les soldes de la semaine et cumulé." width="553" height="1200">
+        <img class="sombre-seulement" src="images/pointer-sombre.png" alt="L'écran Pointer en thème sombre." width="553" height="1200">
+      </div>
+    </header>
+
+    <section>
+      <h2>Ce que ça fait</h2>
+      <ul class="features">
+        <li>Un seul bouton : il enregistre l'heure et devine s'il s'agit d'une arrivée, d'une pause ou d'un départ. Son libellé annonce toujours l'action suivante.</li>
+        <li>Un appui de trop se rattrape : « Annuler le dernier pointage », et un double appui dans la même minute est refusé.</li>
+        <li>Pointage oublié, congé, jour férié : l'historique se corrige à la main, heures ou code d'absence.</li>
+        <li>Soldes de la semaine et cumulé, alerte quand l'écart dépasse la tolérance, journées sans départ signalées.</li>
+        <li>Règles réglables : durée de la journée, pause minimum, seuil de pause pour les journées courtes, tolérance.</li>
+        <li>Aucun compte, aucun serveur : les heures restent sur le téléphone.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Aperçu</h2>
+      <div class="galerie">
+        <figure>
+          <img src="images/pointer.png" alt="L'écran Pointer." width="553" height="1200" loading="lazy">
+          <figcaption>Pointer : la journée et les soldes.</figcaption>
+        </figure>
+        <figure>
+          <img src="images/historique.png" alt="L'historique, semaine par semaine, avec l'écart de chaque jour." width="553" height="1200" loading="lazy">
+          <figcaption>Historique : l'écart de chaque jour, semaine par semaine.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section>
+      <h2>Le bouton</h2>
+      <p>Le deuxième appui est le seul ambigu, départ ou début de pause : l'app le tranche d'elle-même, selon le nombre de pointages de la journée.</p>
+      <table>
+        <tr><th>Pointages</th><th>Lecture</th></tr>
+        <tr><td>1</td><td>arrivée, journée en cours</td></tr>
+        <tr><td>2</td><td>arrivée et départ, sans pause</td></tr>
+        <tr><td>3</td><td>arrivée, début et fin de pause, journée en cours</td></tr>
+        <tr><td>4</td><td>journée complète</td></tr>
+      </table>
+    </section>
+
+    <section>
+      <h2>Compatible avec la CLI TimeTracker</h2>
+      <p>Pointage calcule exactement comme <a href="https://ymauray.github.io/timetracker/">TimeTracker</a>, l'outil en ligne de commande qui produit le bilan en Markdown et en PDF. Les deux partagent leurs cas de test. L'app exporte et importe le même fichier <code>releve.md</code> :</p>
+      <pre><code>---
+duree_journee: 8h12
+pause_minimum: 0h30
+seuil_pause: 5h00
+tolerance: 10h00
+---
+|Date|Arrivée|Début pause|Fin pause|Départ|Absence|
+|---|---|---|---|---|---|
+|29.9.2026|7h45|11h50|12h20|16h55||
+|30.9.2026|7h45|12h00|12h40|17h05||</code></pre>
+    </section>
+
+    <footer>
+      <p><a href="https://github.com/ymauray/timetracker.ios">github.com/ymauray/timetracker.ios</a> — sous licence <a href="https://github.com/ymauray/timetracker.ios/blob/main/LICENSE">MIT</a> · <a href="confidentialite.html">Politique de confidentialité</a></p>
+    </footer>
+  </div>
+</body>
+</html>

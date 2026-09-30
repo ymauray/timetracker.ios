@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pointage — politique de confidentialité</title>
+<meta name="description" content="Pointage ne collecte aucune donnée : les heures pointées restent sur l'iPhone.">
+<link rel="icon" type="image/png" href="images/favicon.png">
+<style>
+  :root {
+    --bg: #ffffff;
+    --text: #1a2120;
+    --text-muted: #58625f;
+    --accent: #14615b;
+    --border: #e1e7e5;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #111615;
+      --text: #e9efed;
+      --text-muted: #a0aba8;
+      --accent: #4fc2b1;
+      --border: #26302f;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #111615;
+    --text: #e9efed;
+    --text-muted: #a0aba8;
+    --accent: #4fc2b1;
+    --border: #26302f;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.6;
+  }
+  .wrap { max-width: 720px; margin: 0 auto; padding: 0 16px; }
+  header { padding: 48px 0 24px; border-bottom: 1px solid var(--border); }
+  header a.retour { color: var(--text-muted); text-decoration: none; font-size: 0.95rem; }
+  h1 { margin: 12px 0 4px; font-size: clamp(1.7rem, 4vw, 2.2rem); letter-spacing: -0.02em; }
+  p.maj { margin: 0; color: var(--text-muted); font-size: 0.95rem; }
+  section { padding: 24px 0; border-bottom: 1px solid var(--border); }
+  section:last-of-type { border-bottom: none; }
+  h2 { font-size: 1.2rem; margin: 0 0 8px; }
+  footer { padding: 24px 0 64px; color: var(--text-muted); font-size: 0.9rem; }
+  a { color: var(--accent); }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <a class="retour" href="./">← Pointage</a>
+      <h1>Politique de confidentialité</h1>
+      <p class="maj">Mise à jour le 30 septembre 2026</p>
+    </header>
+
+    <section>
+      <h2>En bref</h2>
+      <p>Pointage ne collecte aucune donnée. Les heures que vous pointez ou saisissez sont enregistrées sur votre iPhone, et nulle part ailleurs.</p>
+    </section>
+
+    <section>
+      <h2>Ce que l'app enregistre</h2>
+      <p>Vos heures d'arrivée, de pause et de départ, vos codes d'absence (congés, maladie, férié…) et vos réglages de calcul. Tout est stocké dans l'espace privé de l'app sur l'appareil.</p>
+    </section>
+
+    <section>
+      <h2>Ce qui ne quitte jamais l'appareil</h2>
+      <p>L'app n'a pas de compte, pas de serveur, pas de publicité ni d'outil de mesure d'audience. Elle n'établit aucune connexion réseau. Aucune donnée n'est transmise au développeur ni à un tiers.</p>
+    </section>
+
+    <section>
+      <h2>Export et sauvegarde</h2>
+      <p>Les heures ne sortent de l'app que lorsque vous l'exportez vous-même, en fichier <code>releve.md</code>, vers la destination que vous choisissez dans la feuille de partage d'iOS. La sauvegarde de l'iPhone (iCloud ou ordinateur), si vous l'avez activée, inclut les données de l'app comme celles de toute autre app ; elle relève des réglages de votre appareil.</p>
+    </section>
+
+    <section>
+      <h2>Supprimer vos données</h2>
+      <p>Supprimer l'app efface toutes ses données de l'appareil. Une journée se supprime aussi à tout moment depuis l'historique.</p>
+    </section>
+
+    <section>
+      <h2>Contact</h2>
+      <p>Pour toute question, ouvrez une <a href="https://github.com/ymauray/timetracker.ios/discussions">discussion</a> sur le dépôt du projet.</p>
+    </section>
+
+    <footer>
+      <p><a href="https://github.com/ymauray/timetracker.ios">github.com/ymauray/timetracker.ios</a></p>
+    </footer>
+  </div>
+</body>
+</html>

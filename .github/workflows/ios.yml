@@ -10,6 +10,9 @@ on:
   push:
     branches: [ '**' ]
 
+permissions:
+  contents: read
+
 jobs:
   application:
     name: Compilation et tests iOS

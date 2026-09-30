@@ -1,13 +1,43 @@
 # Pointage
 
+[![iOS CI](https://github.com/ymauray/timetracker.ios/actions/workflows/ios.yml/badge.svg?branch=main)](https://github.com/ymauray/timetracker.ios/actions/workflows/ios.yml)
+[![Licence MIT](https://img.shields.io/github/license/ymauray/timetracker.ios)](LICENSE)
+![iOS 26+](https://img.shields.io/badge/iOS-26%2B-14615b)
+
 App iPhone native de pointage des heures de travail. Un bouton enregistre
 l'heure courante et en déduit l'arrivée, la pause ou le départ ; l'app applique
 les calculs de la CLI [TimeTracker](https://github.com/ymauray/timetracker) et
 affiche les soldes de la semaine et du mois. Aucune donnée ne quitte l'appareil.
 
+Site : [ymauray.github.io/timetracker.ios](https://ymauray.github.io/timetracker.ios/), avec la
+[politique de confidentialité](https://ymauray.github.io/timetracker.ios/confidentialite.html).
+
 - [`AGENTS.md`](AGENTS.md) — les consignes de travail, à lire en premier
 - [`SPECS.md`](SPECS.md) — ce que l'on construit, les règles métier et les décisions prises
 - [`AVANCEMENT.md`](AVANCEMENT.md) — où on en est, et le plan de chaque étape
+- [`CONTRIBUTING.md`](CONTRIBUTING.md), [`SUPPORT.md`](SUPPORT.md), [`SECURITY.md`](SECURITY.md) — contribuer, obtenir de l'aide, signaler une faille
+
+## Installer
+
+L'app est en test sur TestFlight, par invitation ; elle n'est pas encore sur
+l'App Store. Pour l'essayer sans invitation, la compiler depuis les sources
+(voir « Construire ») et la lancer sur un simulateur ou un iPhone.
+
+## Utiliser
+
+- **Pointer** : un appui enregistre l'heure. Le bouton annonce l'action
+  suivante (arrivée, pause ou départ, fin de pause, départ) ; « Annuler le
+  dernier pointage » rattrape un appui de trop.
+- **Historique** : les jours par semaine, avec l'écart de chacun. Toucher un
+  jour pour corriger ses heures ou y mettre une absence ; « + » ajoute une
+  journée oubliée.
+- **Réglages** : durée de la journée, pause minimum, seuil de pause et
+  tolérance, valables pour tout l'historique. L'export produit un `releve.md`
+  que la CLI lit tel quel ; l'import reprend un `releve.md` existant et
+  remplace l'historique après confirmation.
+
+Les soldes se lisent au soir d'hier : la journée en cours n'y entre qu'une
+fois complète.
 
 ## Structure
 
@@ -25,12 +55,12 @@ Tests/               tests unitaires (Swift Testing)
   Fixtures/          copie des fixtures de la CLI, à ne pas modifier ici
 UITests/             tests d'interface (XCTest), app lancée avec -tests-interface
 ci_scripts/          Xcode Cloud
+docs/                site GitHub Pages et politique de confidentialité
 ```
-
-Les dossiers de `Sources/` apparaissent au fil des étapes de `SPECS.md`.
 
 ## Construire
 
+Il faut Xcode (iOS 26 minimum) et XcodeGen (`brew install xcodegen`).
 `project.yml` est la source de vérité. Après toute modification, régénérer :
 
 ```sh
@@ -60,8 +90,18 @@ Deux pipelines, qui ne valident pas la même chose :
   TestFlight. Les fusions sur `main` ne livrent rien ; une version part sur
   TestFlight quand `main` est amenée sur `pre-release`.
 
+Pour livrer, amener `main` sur `pre-release` en avance rapide. Un simple
+déplacement de branche, sans nouveau commit, n'a pas toujours déclenché de
+build : le lancer alors à la main (« Start Build » dans App Store Connect ou
+dans Xcode).
+
 Le numéro de build vient d'Xcode Cloud, pas de `project.yml` : le script de
 post-clone y reporte `$CI_BUILD_NUMBER` avant de régénérer le projet.
+
+`main` est protégée : les deux vérifications de GitHub Actions doivent passer,
+administrateur compris, et les *pull requests* se fusionnent en squash. Les
+dépendances (GRDB, actions GitHub) sont suivies par Dependabot. Le site
+(`docs/`) est servi par GitHub Pages depuis `main`.
 
 Seule dépendance : GRDB. `Package.resolved` doit rester versionné dans
 `Pointage.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/` : Xcode Cloud

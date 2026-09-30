@@ -58,8 +58,9 @@ Six règles, sans exception : jamais de commit ni de push sans y être invité, 
 pas les suggérer non plus, s'identifier comme co-auteur, messages en français au
 format *conventional commits*.
 
-`main` est protégée. Le travail passe par une branche puis une *pull request*,
-fusionnée en squash ou en rebase, jamais par un commit de fusion.
+`main` est protégée, administrateur compris : les deux vérifications de la CI
+doivent passer. Le travail passe par une branche puis une *pull request*,
+fusionnée en squash, seul mode autorisé.
 
 **Xcode Cloud surveille `pre-release`, pas `main`.** Tout ce qui arrive sur
 `pre-release` part sur TestFlight : n'y pousser que sur demande explicite.
