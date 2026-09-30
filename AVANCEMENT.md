@@ -25,21 +25,12 @@ ISO par calcul), `ReleveParser` (messages de la CLI au caractère près),
 `ValidationJournee`, `Calculateur`, `ReleveWriter`. Les cinq fixtures passent,
 ainsi qu'un aller-retour export → relecture sur chacune.
 
+**4. Pointer** — `JourStocke` (zéro à quatre heures ou une absence, lecture
+selon leur nombre, bouton, annulation, refus), `Bilan` (soldes au soir d'hier),
+table `jour` sous GRDB, horloge injectable, écran Pointer vérifié en clair et en
+sombre. Première build utilisable au quotidien.
+
 ## À faire
-
-### 4. Pointages, stockage, écran Pointer
-
-- GRDB revient, `Package.resolved` commité.
-- Table `jour` : `date` en clé, `h1` à `h4` en minutes, `absence`. Pointages
-  bruts et saisie manuelle écrivent les mêmes colonnes ; le nombre d'heures
-  renseignées en donne la lecture (tableau de `SPECS.md`). Schéma créé par
-  `DatabaseMigrator`.
-- Horloge injectable, pour tester le bouton sans l'heure réelle.
-- Écran : bouton annonçant l'action suivante (cinquième appui refusé),
-  pointages du jour, réalisé en cours rafraîchi chaque minute, soldes de la
-  semaine et du mois, alerte de tolérance, bouton « Annuler le dernier
-  pointage ».
-- Première build utilisable au quotidien.
 
 ### 5. Historique et édition
 
@@ -68,6 +59,11 @@ que l'app.
 - **Export avec une journée incomplète** : bloqué tant qu'elle existe, en la
   montrant ; `releve.md` ne sait pas l'écrire.
 - **Import** : remplace tout l'historique, après confirmation.
+- **Période des soldes** : elle court jusqu'à hier, pas seulement jusqu'au
+  dernier jour complet. Une veille restée incomplète compte donc déjà en déficit,
+  alors que la CLI arrête le calcul au dernier jour renseigné.
+- **Journée terminée** : le bouton reste actif et un appui affiche le refus,
+  comme un cinquième pointage.
 - **Appui accidentel** : un bouton « Annuler le dernier pointage » sur l'écran
   Pointer retire le pointage le plus récent du jour.
 - **Deux appuis dans la même minute** : le second est refusé avec un message

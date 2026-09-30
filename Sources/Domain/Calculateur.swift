@@ -41,10 +41,12 @@ enum Calculateur {
         let mois: [Mois]
     }
 
-    /// Nil quand aucune journée n'est renseignée : sans premier ni dernier jour,
-    /// il n'y a pas de période à calculer.
-    static func calculer(_ journees: [Journee], reglages: Reglages) -> Rapport? {
-        guard let debut = journees.map(\.date).min(), let fin = journees.map(\.date).max() else { return nil }
+    /// Nil quand aucune journée n'est renseignée : sans premier jour, il n'y a
+    /// pas de période à calculer. La période va du premier au dernier jour
+    /// renseigné, comme dans la CLI, ou jusqu'à `jusquA` s'il est plus tard.
+    static func calculer(_ journees: [Journee], reglages: Reglages, jusquA: DateCivile? = nil) -> Rapport? {
+        guard let debut = journees.map(\.date).min(), let dernier = journees.map(\.date).max() else { return nil }
+        let fin = max(dernier, jusquA ?? dernier)
         let parDate = Dictionary(journees.map { ($0.date, $0) }, uniquingKeysWith: { premiere, _ in premiere })
 
         var jours: [Jour] = []
