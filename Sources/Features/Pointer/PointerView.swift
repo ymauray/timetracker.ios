@@ -67,6 +67,7 @@ struct PointerView: View {
             }
             .buttonStyle(.plain)
             .accessibilityLabel("Pointer : \(model.aujourdhui.actionSuivante ?? "journée terminée")")
+            .accessibilityIdentifier("bouton-pointer")
 
             if !model.aujourdhui.heures.isEmpty {
                 Button("Annuler le dernier pointage", systemImage: "arrow.uturn.backward", action: model.annulerDernierPointage)
