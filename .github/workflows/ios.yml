@@ -1,0 +1,62 @@
+name: iOS CI
+
+# Toutes les branches, pas seulement main : le travail se fait sur des branches
+# poussées régulièrement, et c'est là que le filet doit se tendre. Une exécution
+# déclenchée par un push satisfait aussi la vérification exigée par la protection
+# de main, GitHub rattachant les résultats au commit de tête et non à
+# l'événement qui les a produits — d'où l'absence de déclencheur pull_request,
+# qui ne ferait que doubler chaque exécution.
+on:
+  push:
+    branches: [ '**' ]
+
+jobs:
+  application:
+    name: Compilation et tests iOS
+    runs-on: macos-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Installer XcodeGen
+        run: brew install xcodegen
+
+      # Le projet est régénéré depuis project.yml, qui reste la source de vérité même si
+      # le .xcodeproj est committé pour Xcode Cloud.
+      - name: Générer le projet Xcode
+        run: xcodegen generate
+
+      - name: Compiler et tester
+        run: |
+          UDID=$(xcrun simctl list devices available -j \
+            | jq -r '[.devices | to_entries[] | select(.key | contains("iOS")) | .value[]] | first | .udid')
+          xcodebuild \
+            -project Pointage.xcodeproj \
+            -scheme Pointage-iOS \
+            -destination "platform=iOS Simulator,id=$UDID" \
+            -configuration Debug \
+            CODE_SIGNING_ALLOWED=NO \
+            test
+
+  # Les fixtures naissent dans le dépôt de la CLI, qui fait référence pour le
+  # calcul. Ce dépôt n'en garde qu'une copie, pour qu'Xcode Cloud n'ait rien à
+  # récupérer ailleurs ; ce job échoue dès que la copie a dérivé de la branche
+  # main de la CLI.
+  fixtures:
+    name: Fixtures alignées sur la CLI
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Checkout de la CLI
+        uses: actions/checkout@v7
+        with:
+          repository: ymauray/timetracker
+          ref: main
+          path: cli
+
+      - name: Comparer les fixtures
+        run: diff -r cli/tests/TimeTracker.Tests/Fixtures Tests/Fixtures

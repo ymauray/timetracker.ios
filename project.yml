@@ -1,0 +1,86 @@
+name: Pointage
+options:
+  bundleIdPrefix: ch.yannickmauray
+  deploymentTarget:
+    iOS: "26.0"
+  # Le français est la langue principale : sans ça, les menus système fournis par
+  # UIKit (couper, copier, coller, sélectionner…) apparaissent en
+  # anglais même sur un appareil configuré en français. L'app étant francophone
+  # uniquement, c'est la seule langue déclarée.
+  developmentLanguage: fr
+  createIntermediateGroups: true
+
+packages:
+  GRDB:
+    url: https://github.com/groue/GRDB.swift
+    from: "7.0.0"
+
+settings:
+  base:
+    DEVELOPMENT_TEAM: WFMP87LTRX
+    SWIFT_VERSION: "6.0"
+    SWIFT_STRICT_CONCURRENCY: complete
+    MARKETING_VERSION: "1.0.0"
+    # Valeur de repli seulement : sur Xcode Cloud, ci_post_clone.sh écrase ce
+    # numéro par $CI_BUILD_NUMBER, un build ne pouvant jamais être téléversé deux
+    # fois avec le même numéro.
+    CURRENT_PROJECT_VERSION: "1"
+    # Info.plist entièrement généré à partir des build settings : aucun fichier
+    # .plist à maintenir à la main.
+    GENERATE_INFOPLIST_FILE: YES
+    ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+    INFOPLIST_KEY_CFBundleDisplayName: Pointage
+    # L'app n'utilise aucun chiffrement au-delà de ce qu'offre le système. Le
+    # déclarer ici évite d'avoir à répondre à la question à chaque livraison sur
+    # TestFlight.
+    INFOPLIST_KEY_ITSAppUsesNonExemptEncryption: NO
+
+targets:
+  Pointage-iOS:
+    type: application
+    platform: iOS
+    sources:
+      - path: Sources
+      - path: Resources
+    dependencies:
+      - package: GRDB
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: ch.yannickmauray.pointage
+        PRODUCT_NAME: Pointage
+        TARGETED_DEVICE_FAMILY: "1"  # iPhone seul
+        INFOPLIST_KEY_UILaunchScreen_Generation: YES
+        INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone:
+          - UIInterfaceOrientationPortrait
+
+  PointageTests:
+    type: bundle.unit-test
+    platform: iOS
+    sources:
+      - path: Tests
+        excludes:
+          - Fixtures
+      # Copié tel quel dans le bundle de test, arborescence comprise : les tests
+      # retrouvent chaque fixture par son dossier, comme côté CLI.
+      - path: Tests/Fixtures
+        type: folder
+        buildPhase: resources
+    dependencies:
+      - target: Pointage-iOS
+      - package: GRDB
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: ch.yannickmauray.pointage.tests
+        # XcodeGen déduit l'hôte de test du nom de la cible ; il faut le corriger
+        # ici, le produit s'appelant Pointage et la cible Pointage-iOS.
+        TEST_HOST: $(BUILT_PRODUCTS_DIR)/Pointage.app/Pointage
+        BUNDLE_LOADER: $(TEST_HOST)
+
+schemes:
+  Pointage-iOS:
+    build:
+      targets:
+        Pointage-iOS: all
+    test:
+      targets: [PointageTests]
+      gatherCoverageData: true
