@@ -1,0 +1,15 @@
+version: 2
+updates:
+  # Les paquets Swift : GRDB, déclaré dans project.yml (« from: 7.0.0 ») et figé
+  # dans le Package.resolved du .xcodeproj, que Dependabot lit sans Package.swift.
+  # Ses mises à jour restent dans la version majeure et ne touchent que
+  # Package.resolved ; changer de version majeure passe par project.yml.
+  - package-ecosystem: "swift"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
