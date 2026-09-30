@@ -7,21 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0FE6B67761ED23FF21DC3C47 /* GRDB in Frameworks */ = {isa = PBXBuildFile; productRef = FA6AA5CE7036FBD0C35F3BFC /* GRDB */; };
 		31D5AB5C98FAF429F2220B76 /* Fixtures in Resources */ = {isa = PBXBuildFile; fileRef = 851BDD2C16B7E5F3CDC1D16F /* Fixtures */; };
-		6CC9C991F15EDDFE89DA4D3A /* PointageApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A100A3747F42D3B607284AB /* PointageApp.swift */; };
 		7EC0DE388E8A768B423AB0A1 /* FixturesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492290AB55150457D0A7AA72 /* FixturesTests.swift */; };
-		AAD42CB9DDB425844C8D746C /* GRDB in Frameworks */ = {isa = PBXBuildFile; productRef = 3CC259AA4EA5B1D8D740FEEC /* GRDB */; };
-		AAEAD64654BCF143F6030D8F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C917E018A5E1111552652F41 /* Assets.xcassets */; };
+		83A6BB4A912BD170252F75D1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C917E018A5E1111552652F41 /* Assets.xcassets */; };
+		9269CD83D3CBD056F47EA7EF /* PointageApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A100A3747F42D3B607284AB /* PointageApp.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		64FD8E052760D09C1B418889 /* PBXContainerItemProxy */ = {
+		CA629C9907B468DF73805045 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = A2F05599E9D4408C9D602C1A /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 13A2301A84611C37C57826E2;
-			remoteInfo = "Pointage-iOS";
+			remoteGlobalIDString = 5F043B2F81B855258F4E9C0C;
+			remoteInfo = Pointage;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -30,28 +28,9 @@
 		4B4C53C59E99F91764C029FD /* PointageTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = PointageTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		851BDD2C16B7E5F3CDC1D16F /* Fixtures */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Fixtures; path = Tests/Fixtures; sourceTree = SOURCE_ROOT; };
 		9A100A3747F42D3B607284AB /* PointageApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointageApp.swift; sourceTree = "<group>"; };
-		B155D8D61687A32961C63702 /* Pointage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pointage.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C917E018A5E1111552652F41 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		FB4B8A2063B92F168206BFD6 /* Pointage.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = Pointage.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
-
-/* Begin PBXFrameworksBuildPhase section */
-		8D616409E57026894ED2DF7B /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				AAD42CB9DDB425844C8D746C /* GRDB in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		AFB81008C0454B6CC0B6C570 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				0FE6B67761ED23FF21DC3C47 /* GRDB in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		3D4B1848E973BEF4F0513147 /* App */ = {
@@ -65,7 +44,7 @@
 		5CE7A90339EC7EE95B7F413C /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				B155D8D61687A32961C63702 /* Pointage.app */,
+				FB4B8A2063B92F168206BFD6 /* Pointage.app */,
 				4B4C53C59E99F91764C029FD /* PointageTests.xctest */,
 			);
 			name = Products;
@@ -109,46 +88,42 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		13A2301A84611C37C57826E2 /* Pointage-iOS */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = A7373E57431927C56B312059 /* Build configuration list for PBXNativeTarget "Pointage-iOS" */;
-			buildPhases = (
-				5F3EFB7A440398B87AA3FA6C /* Sources */,
-				9F3AF523AB160B2E85113CBF /* Resources */,
-				AFB81008C0454B6CC0B6C570 /* Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "Pointage-iOS";
-			packageProductDependencies = (
-				FA6AA5CE7036FBD0C35F3BFC /* GRDB */,
-			);
-			productName = "Pointage-iOS";
-			productReference = B155D8D61687A32961C63702 /* Pointage.app */;
-			productType = "com.apple.product-type.application";
-		};
 		2EB3B7274418B215F25FEE50 /* PointageTests */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8B8695C563DACE3A84ECBB39 /* Build configuration list for PBXNativeTarget "PointageTests" */;
 			buildPhases = (
 				312F8FD135E3D62A64ED7BE5 /* Sources */,
 				04ABFB8FFAC598B5F1306B4F /* Resources */,
-				8D616409E57026894ED2DF7B /* Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				EDE678A63E5DE881B043A58C /* PBXTargetDependency */,
+				687A75C1C0BCDD102D031F4D /* PBXTargetDependency */,
 			);
 			name = PointageTests;
 			packageProductDependencies = (
-				3CC259AA4EA5B1D8D740FEEC /* GRDB */,
 			);
 			productName = PointageTests;
 			productReference = 4B4C53C59E99F91764C029FD /* PointageTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		5F043B2F81B855258F4E9C0C /* Pointage */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 97F835CD71E0F1DB7B4B2D61 /* Build configuration list for PBXNativeTarget "Pointage" */;
+			buildPhases = (
+				7DEEEEBBC1EE0A5FED9DC57C /* Sources */,
+				CF36A267358079E69318492E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Pointage;
+			packageProductDependencies = (
+			);
+			productName = Pointage;
+			productReference = FB4B8A2063B92F168206BFD6 /* Pointage.app */;
+			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
@@ -159,10 +134,10 @@
 				BuildIndependentTargetsInParallel = YES;
 				LastUpgradeCheck = 1430;
 				TargetAttributes = {
-					13A2301A84611C37C57826E2 = {
+					2EB3B7274418B215F25FEE50 = {
 						DevelopmentTeam = WFMP87LTRX;
 					};
-					2EB3B7274418B215F25FEE50 = {
+					5F043B2F81B855258F4E9C0C = {
 						DevelopmentTeam = WFMP87LTRX;
 					};
 				};
@@ -176,15 +151,12 @@
 			);
 			mainGroup = CC96E70BB76FEAC98F5275DA;
 			minimizedProjectReferenceProxies = 1;
-			packageReferences = (
-				7050B53D9B6B2FD5019862F2 /* XCRemoteSwiftPackageReference "GRDB" */,
-			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 5CE7A90339EC7EE95B7F413C /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				13A2301A84611C37C57826E2 /* Pointage-iOS */,
+				5F043B2F81B855258F4E9C0C /* Pointage */,
 				2EB3B7274418B215F25FEE50 /* PointageTests */,
 			);
 		};
@@ -199,11 +171,11 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		9F3AF523AB160B2E85113CBF /* Resources */ = {
+		CF36A267358079E69318492E /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AAEAD64654BCF143F6030D8F /* Assets.xcassets in Resources */,
+				83A6BB4A912BD170252F75D1 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -218,21 +190,21 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		5F3EFB7A440398B87AA3FA6C /* Sources */ = {
+		7DEEEEBBC1EE0A5FED9DC57C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6CC9C991F15EDDFE89DA4D3A /* PointageApp.swift in Sources */,
+				9269CD83D3CBD056F47EA7EF /* PointageApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		EDE678A63E5DE881B043A58C /* PBXTargetDependency */ = {
+		687A75C1C0BCDD102D031F4D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 13A2301A84611C37C57826E2 /* Pointage-iOS */;
-			targetProxy = 64FD8E052760D09C1B418889 /* PBXContainerItemProxy */;
+			target = 5F043B2F81B855258F4E9C0C /* Pointage */;
+			targetProxy = CA629C9907B468DF73805045 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -250,26 +222,6 @@
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Pointage.app/Pointage";
-			};
-			name = Debug;
-		};
-		1089C3256C6B895AA462C0CC /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				INFOPLIST_KEY_CFBundleDisplayName = Pointage;
-				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = ch.yannickmauray.pointage;
-				PRODUCT_NAME = Pointage;
-				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -408,25 +360,43 @@
 			};
 			name = Debug;
 		};
-		AAA11F0C1AD283CD78954269 /* Release */ = {
+		6A926FE7C01599145FA3A83B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				INFOPLIST_KEY_CFBundleDisplayName = Pointage;
-				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = (
+					UIInterfaceOrientationPortrait,
+				);
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = ch.yannickmauray.pointage;
-				PRODUCT_NAME = Pointage;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
+		};
+		8E5EDF88BE8F9E64FBA14341 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = (
+					UIInterfaceOrientationPortrait,
+				);
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = ch.yannickmauray.pointage;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
 		};
 		E4E716F7EE297905A9AE6EC6 /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -465,40 +435,16 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
 		};
-		A7373E57431927C56B312059 /* Build configuration list for PBXNativeTarget "Pointage-iOS" */ = {
+		97F835CD71E0F1DB7B4B2D61 /* Build configuration list for PBXNativeTarget "Pointage" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				1089C3256C6B895AA462C0CC /* Debug */,
-				AAA11F0C1AD283CD78954269 /* Release */,
+				8E5EDF88BE8F9E64FBA14341 /* Debug */,
+				6A926FE7C01599145FA3A83B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		7050B53D9B6B2FD5019862F2 /* XCRemoteSwiftPackageReference "GRDB" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/groue/GRDB.swift";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 7.0.0;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		3CC259AA4EA5B1D8D740FEEC /* GRDB */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 7050B53D9B6B2FD5019862F2 /* XCRemoteSwiftPackageReference "GRDB" */;
-			productName = GRDB;
-		};
-		FA6AA5CE7036FBD0C35F3BFC /* GRDB */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 7050B53D9B6B2FD5019862F2 /* XCRemoteSwiftPackageReference "GRDB" */;
-			productName = GRDB;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = A2F05599E9D4408C9D602C1A /* Project object */;
 }

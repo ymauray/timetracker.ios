@@ -128,7 +128,8 @@ Reprendre au plus près `project.yml`, `.github/workflows/ios.yml`,
   `INFOPLIST_KEY_ITSAppUsesNonExemptEncryption: NO`, `MARKETING_VERSION: "1.0.0"`.
 - `ci_post_clone.sh` : installe XcodeGen, reporte `$CI_BUILD_NUMBER` dans
   `CURRENT_PROJECT_VERSION`, régénère le projet.
-- Xcode Cloud surveille `main` : toute fusion livre une build TestFlight.
+- Xcode Cloud surveille `pre-release` : une version part sur TestFlight quand
+  `main` y est amenée, et non à chaque fusion sur `main`.
 - GitHub Actions sur toutes les branches : XcodeGen, compilation, tests sur
   simulateur, `CODE_SIGNING_ALLOWED=NO`. Plus le job de comparaison des fixtures.
 - GRDB 7 pour le stockage, avec `DatabaseMigrator` (pas de base héritée à
@@ -153,7 +154,8 @@ seul, police système.
 2. Ici : squelette XcodeGen, `ci_scripts`, `ios.yml`, `AGENTS.md`, puis un premier
    build TestFlight vide pour valider la chaîne de livraison.
 3. `Domain/` en Swift, qui doit passer les fixtures copiées.
-4. Pointages bruts, stockage GRDB, écran Pointer.
+4. Pointages bruts, stockage GRDB (le paquet entre dans le projet à cette
+   étape), écran Pointer.
 5. Historique et édition manuelle.
 6. Réglages, import et export de `releve.md`.
 7. Plus tard, si besoin : widget, raccourci Siri, bouton Action.
