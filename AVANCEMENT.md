@@ -30,14 +30,12 @@ selon leur nombre, bouton, annulation, refus), `Bilan` (soldes au soir d'hier),
 table `jour` sous GRDB, horloge injectable, écran Pointer vérifié en clair et en
 sombre. Première build utilisable au quotidien.
 
+**5. Historique** — onglets Pointer et Historique ; jours par semaine ISO avec
+leur écart, journées sans départ et jours ouvrés vides mis en évidence ; feuille
+d'édition (heures ou absence), ajout d'une journée oubliée, suppression. Écrans
+vérifiés en clair et en sombre.
+
 ## À faire
-
-### 5. Historique et édition
-
-- Liste par semaine ISO, écart de chaque jour.
-- Jours ouvrés vides et journées incomplètes mis en évidence.
-- Feuille d'édition : quatre heures ou code d'absence, validations de l'étape 3.
-- Ajout d'une journée oubliée, suppression d'une journée.
 
 ### 6. Réglages, import et export
 
@@ -62,6 +60,11 @@ que l'app.
 - **Période des soldes** : elle court jusqu'à hier, pas seulement jusqu'au
   dernier jour complet. Une veille restée incomplète compte donc déjà en déficit,
   alors que la CLI arrête le calcul au dernier jour renseigné.
+- **Messages de validation** : une seule validation (`ValidationJournee`), qui
+  rend une erreur typée ; le parser la formule comme la CLI, sans accents,
+  l'écran d'édition en français courant.
+- **Édition d'une journée en cours** : elle ne s'enregistre qu'avec arrivée et
+  départ, comme dans `releve.md` ; avant, c'est le bouton Pointer qui la mène.
 - **Journée terminée** : le bouton reste actif et un appui affiche le refus,
   comme un cinquième pointage.
 - **Appui accidentel** : un bouton « Annuler le dernier pointage » sur l'écran

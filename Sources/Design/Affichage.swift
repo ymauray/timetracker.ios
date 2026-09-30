@@ -18,6 +18,39 @@ enum Affichage {
         "\(date.jour) \(nomsDesMois[date.mois - 1])"
     }
 
+    /// « Lun 28 septembre », pour les lignes de l’historique.
+    static func dateListe(_ date: DateCivile) -> String {
+        let jour = joursDeLaSemaine[date.jourDeLaSemaine - 1].prefix(3)
+        return "\(jour.prefix(1).uppercased())\(jour.dropFirst()) \(date.jour) \(nomsDesMois[date.mois - 1])"
+    }
+
+    private static let moisAbreges = [
+        "janv.", "févr.", "mars", "avr.", "mai", "juin",
+        "juil.", "août", "sept.", "oct.", "nov.", "déc.",
+    ]
+
+    /// « Mar 29 sept. », pour les titres courts.
+    static func dateAbregee(_ date: DateCivile) -> String {
+        let jour = joursDeLaSemaine[date.jourDeLaSemaine - 1].prefix(3)
+        return "\(jour.prefix(1).uppercased())\(jour.dropFirst()) \(date.jour) \(moisAbreges[date.mois - 1])"
+    }
+
+    /// « 28 sept. – 4 oct. », pour les en-têtes de semaine.
+    static func semaine(lundi: DateCivile) -> String {
+        let dimanche = lundi.ajoutant(jours: 6)
+        return "\(lundi.jour) \(moisAbreges[lundi.mois - 1]) – \(dimanche.jour) \(moisAbreges[dimanche.mois - 1])"
+    }
+
+    static func absence(_ absence: Absence) -> String {
+        switch absence {
+        case .conges: "Congés"
+        case .maladie: "Maladie"
+        case .ferie: "Férié"
+        case .rtt: "RTT"
+        case .divers: "Divers"
+        }
+    }
+
     /// « 8h05 ».
     static func heure(_ minutes: Int) -> String {
         Formats.heureReleve(minutes)

@@ -162,8 +162,8 @@ enum ReleveParser {
             case let .success(contenu):
                 datesVues[date] = numero
                 journees.append(Journee(date: date, contenu: contenu))
-            case let .failure(message):
-                erreur(message.texte)
+            case let .failure(erreurJournee):
+                erreur(erreurJournee.messageReleve)
             }
         }
 
