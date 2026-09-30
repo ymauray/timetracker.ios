@@ -6,6 +6,14 @@ protocol Horloge: Sendable {
     func maintenant() -> (date: DateCivile, minute: Int)
 }
 
+/// Un instant figé : celui des tests d'interface.
+struct HorlogeFixe: Horloge {
+    let date: DateCivile
+    let minute: Int
+
+    func maintenant() -> (date: DateCivile, minute: Int) { (date, minute) }
+}
+
 /// L'heure de l'appareil, dans son fuseau courant : c'est l'heure affichée par
 /// le téléphone qui fait foi.
 struct HorlogeSysteme: Horloge {

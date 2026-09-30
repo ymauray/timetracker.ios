@@ -51,6 +51,17 @@
                ReferencedContainer = "container:Pointage.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO"
+            parallelizable = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "BC4F5080312C493426061B62"
+               BuildableName = "PointageUITests.xctest"
+               BlueprintName = "PointageUITests"
+               ReferencedContainer = "container:Pointage.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <CommandLineArguments>
       </CommandLineArguments>

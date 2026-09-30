@@ -16,6 +16,7 @@
 		4F26ED26F59E97861A80BB56 /* ReleveWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB34558445DC95F6243E1555 /* ReleveWriter.swift */; };
 		50388B520813B83D9B5D2A35 /* Affichage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EFE00962C3999DEDA26D663 /* Affichage.swift */; };
 		5564648CE2C22A3C50938C14 /* Formats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92C6D12061FCE29055B4F7B7 /* Formats.swift */; };
+		57D547B0EFC03903BB50B7AA /* ParcoursTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0DD350DD68C708406D99FEA /* ParcoursTests.swift */; };
 		5DE5DA32A63DCB317E9EC2AF /* PointerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F99A837020928BEA8576DEB /* PointerTests.swift */; };
 		6212019F093E49C0A7B005AD /* AppPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D59B0E010B349FD31D7AAF0 /* AppPreferences.swift */; };
 		6E171897B7A45B06849D4638 /* JourStocke.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55BD64E778C29090CC96D5F6 /* JourStocke.swift */; };
@@ -44,6 +45,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		05792D253E5843925B251F89 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A2F05599E9D4408C9D602C1A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5F043B2F81B855258F4E9C0C;
+			remoteInfo = Pointage;
+		};
 		CA629C9907B468DF73805045 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = A2F05599E9D4408C9D602C1A /* Project object */;
@@ -76,7 +84,9 @@
 		98E6F05CFF4A8B03078EAE2D /* Base.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Base.swift; sourceTree = "<group>"; };
 		9A100A3747F42D3B607284AB /* PointageApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointageApp.swift; sourceTree = "<group>"; };
 		9D59B0E010B349FD31D7AAF0 /* AppPreferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppPreferences.swift; sourceTree = "<group>"; };
+		A0DD350DD68C708406D99FEA /* ParcoursTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParcoursTests.swift; sourceTree = "<group>"; };
 		AEC95DD6EF31A844D6848DF6 /* HistoriqueModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoriqueModel.swift; sourceTree = "<group>"; };
+		B016AA760F035EBBA4C70F3D /* PointageUITests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = PointageUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCA726E9EEFDA52098F21E94 /* HistoriqueTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoriqueTests.swift; sourceTree = "<group>"; };
 		C917E018A5E1111552652F41 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C94AE210C5BDB549362CDD94 /* Horloge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Horloge.swift; sourceTree = "<group>"; };
@@ -197,6 +207,7 @@
 			children = (
 				FB4B8A2063B92F168206BFD6 /* Pointage.app */,
 				4B4C53C59E99F91764C029FD /* PointageTests.xctest */,
+				B016AA760F035EBBA4C70F3D /* PointageUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -228,8 +239,17 @@
 				9DB3049D5A43008986DFD5CE /* Resources */,
 				978F1E5703F729E3FFB6B8CE /* Sources */,
 				E72B2B96824359F7A90C97B1 /* Tests */,
+				DB144D84AA073D9424A7C705 /* UITests */,
 				5CE7A90339EC7EE95B7F413C /* Products */,
 			);
+			sourceTree = "<group>";
+		};
+		DB144D84AA073D9424A7C705 /* UITests */ = {
+			isa = PBXGroup;
+			children = (
+				A0DD350DD68C708406D99FEA /* ParcoursTests.swift */,
+			);
+			path = UITests;
 			sourceTree = "<group>";
 		};
 		E72B2B96824359F7A90C97B1 /* Tests */ = {
@@ -298,6 +318,24 @@
 			productReference = FB4B8A2063B92F168206BFD6 /* Pointage.app */;
 			productType = "com.apple.product-type.application";
 		};
+		BC4F5080312C493426061B62 /* PointageUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 97FBA85F10698289348A2924 /* Build configuration list for PBXNativeTarget "PointageUITests" */;
+			buildPhases = (
+				27E4AC8FBC82EDE9499321EB /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				DF12968891B7C7112E0C55E6 /* PBXTargetDependency */,
+			);
+			name = PointageUITests;
+			packageProductDependencies = (
+			);
+			productName = PointageUITests;
+			productReference = B016AA760F035EBBA4C70F3D /* PointageUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -312,6 +350,10 @@
 					};
 					5F043B2F81B855258F4E9C0C = {
 						DevelopmentTeam = WFMP87LTRX;
+					};
+					BC4F5080312C493426061B62 = {
+						DevelopmentTeam = WFMP87LTRX;
+						TestTargetID = 5F043B2F81B855258F4E9C0C;
 					};
 				};
 			};
@@ -334,6 +376,7 @@
 			targets = (
 				5F043B2F81B855258F4E9C0C /* Pointage */,
 				2EB3B7274418B215F25FEE50 /* PointageTests */,
+				BC4F5080312C493426061B62 /* PointageUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -358,6 +401,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		27E4AC8FBC82EDE9499321EB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				57D547B0EFC03903BB50B7AA /* ParcoursTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		312F8FD135E3D62A64ED7BE5 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -409,6 +460,11 @@
 			isa = PBXTargetDependency;
 			target = 5F043B2F81B855258F4E9C0C /* Pointage */;
 			targetProxy = CA629C9907B468DF73805045 /* PBXContainerItemProxy */;
+		};
+		DF12968891B7C7112E0C55E6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5F043B2F81B855258F4E9C0C /* Pointage */;
+			targetProxy = 05792D253E5843925B251F89 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -566,6 +622,22 @@
 			};
 			name = Debug;
 		};
+		4CFAED1758830CED25FF8D28 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = ch.yannickmauray.pointage.uitests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Pointage;
+			};
+			name = Debug;
+		};
 		6A926FE7C01599145FA3A83B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -620,6 +692,22 @@
 			};
 			name = Release;
 		};
+		E6DE83F0FB2456EDF5B74D19 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = ch.yannickmauray.pointage.uitests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Pointage;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -646,6 +734,15 @@
 			buildConfigurations = (
 				8E5EDF88BE8F9E64FBA14341 /* Debug */,
 				6A926FE7C01599145FA3A83B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		97FBA85F10698289348A2924 /* Build configuration list for PBXNativeTarget "PointageUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4CFAED1758830CED25FF8D28 /* Debug */,
+				E6DE83F0FB2456EDF5B74D19 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;

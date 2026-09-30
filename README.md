@@ -23,6 +23,7 @@ Sources/
 Resources/           icône d'app
 Tests/               tests unitaires (Swift Testing)
   Fixtures/          copie des fixtures de la CLI, à ne pas modifier ici
+UITests/             tests d'interface (XCTest), app lancée avec -tests-interface
 ci_scripts/          Xcode Cloud
 ```
 

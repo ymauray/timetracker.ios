@@ -57,6 +57,7 @@ struct ChampHeure: View {
             } else {
                 Button("Ajouter") { minutes = parDefaut }
                     .buttonStyle(.borderless)
+                    .accessibilityLabel("Ajouter \(titre.lowercased())")
             }
         }
     }

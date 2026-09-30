@@ -1,8 +1,11 @@
+import GRDB
 import SwiftUI
 
 @main
 struct PointageApp: App {
-    @State private var ecrans = Result { try Ecrans() }
+    @State private var ecrans = Result {
+        try ProcessInfo.processInfo.arguments.contains("-tests-interface") ? Ecrans.pourTestsInterface() : Ecrans()
+    }
 
     var body: some Scene {
         WindowGroup {
@@ -38,10 +41,26 @@ private struct Ecrans {
     let reglages: ReglagesModel
 
     init() throws {
-        let repository = JoursRepository(base: try Base.ouvrir())
-        let horloge = HorlogeSysteme()
-        pointer = PointerModel(repository: repository, horloge: horloge, preferences: .shared)
-        historique = HistoriqueModel(repository: repository, horloge: horloge, preferences: .shared)
-        reglages = ReglagesModel(repository: repository, horloge: horloge, preferences: .shared)
+        try self.init(base: Base.ouvrir(), horloge: HorlogeSysteme(), preferences: .shared)
+    }
+
+    /// Lancée avec `-tests-interface` : base vide en mémoire, réglages par défaut
+    /// hors des préférences réelles, et le lundi 5 octobre 2026 à 8h00 pour
+    /// toujours.
+    static func pourTestsInterface() throws -> Ecrans {
+        let defaults = UserDefaults(suiteName: "tests-interface")!
+        defaults.removePersistentDomain(forName: "tests-interface")
+        return try Ecrans(
+            base: Base.enMemoire(),
+            horloge: HorlogeFixe(date: DateCivile(annee: 2026, mois: 10, jour: 5)!, minute: 8 * 60),
+            preferences: AppPreferences(defaults: defaults)
+        )
+    }
+
+    private init(base: DatabaseQueue, horloge: any Horloge, preferences: AppPreferences) {
+        let repository = JoursRepository(base: base)
+        pointer = PointerModel(repository: repository, horloge: horloge, preferences: preferences)
+        historique = HistoriqueModel(repository: repository, horloge: horloge, preferences: preferences)
+        reglages = ReglagesModel(repository: repository, horloge: horloge, preferences: preferences)
     }
 }

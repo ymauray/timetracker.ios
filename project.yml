@@ -72,11 +72,23 @@ targets:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: ch.yannickmauray.pointage.tests
 
+  # Des gestes réels sur l'app, lancée avec -tests-interface (voir PointageApp).
+  PointageUITests:
+    type: bundle.ui-testing
+    platform: iOS
+    sources:
+      - path: UITests
+    dependencies:
+      - target: Pointage
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: ch.yannickmauray.pointage.uitests
+
 schemes:
   Pointage:
     build:
       targets:
         Pointage: all
     test:
-      targets: [PointageTests]
+      targets: [PointageTests, PointageUITests]
       gatherCoverageData: true

@@ -46,6 +46,12 @@ pour avoir été cherchés sur le seul `error:`.
 simulateur de travail est « iPhone 16 (référence) », aligné sur l'appareil de
 Yannick, avec `xcrun simctl ui <appareil> content_size medium`.
 
+Depuis Xcode 27, le simulateur s'appelle DeviceHub, et System Events n'y voit
+aucune fenêtre : un script ne peut pas y cliquer. Les gestes se vérifient donc
+par les tests d'interface (`UITests/`), qui lancent l'app avec
+`-tests-interface` : base vide en mémoire, lundi 5 octobre 2026 à 8h00, horloge
+arrêtée.
+
 ## Git
 
 Six règles, sans exception : jamais de commit ni de push sans y être invité, ne
