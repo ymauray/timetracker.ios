@@ -153,7 +153,8 @@ seul, police système.
 2. Ici : squelette XcodeGen, `ci_scripts`, `ios.yml`, `AGENTS.md`, puis un premier
    build TestFlight vide pour valider la chaîne de livraison.
 3. `Domain/` en Swift, qui doit passer les fixtures copiées.
-4. Pointages bruts, stockage GRDB, écran Pointer.
+4. Pointages bruts, stockage GRDB (le paquet entre dans le projet à cette
+   étape), écran Pointer.
 5. Historique et édition manuelle.
 6. Réglages, import et export de `releve.md`.
 7. Plus tard, si besoin : widget, raccourci Siri, bouton Action.

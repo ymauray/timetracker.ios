@@ -60,7 +60,16 @@ Deux pipelines, qui ne valident pas la même chose :
 Le numéro de build vient d'Xcode Cloud, pas de `project.yml` : le script de
 post-clone y reporte `$CI_BUILD_NUMBER` avant de régénérer le projet.
 
-`Package.resolved` doit rester versionné dans
+Le projet n'a pour l'instant aucune dépendance. Dès qu'un paquet Swift entre
+(GRDB, à l'étape 4), `Package.resolved` doit être versionné dans
 `Pointage.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/` : Xcode Cloud
 désactive la résolution automatique des paquets et s'arrête sans lui, ce que
 GitHub Actions ne peut pas détecter.
+
+**Créer un processus Xcode Cloud avec Xcode 27** bute sur un défaut de
+l'assistant : il exige de connecter chaque dépôt dont dépend le projet, même
+public et appartenant à quelqu'un d'autre, ce qui est impossible. Le processus
+existant n'est pas concerné, ses builds récupèrent les paquets publics sans
+autorisation. Pour en créer un nouveau, retirer les paquets de `project.yml` le
+temps de l'assistant, sans commiter, puis les remettre
+([question Stack Overflow](https://stackoverflow.com/questions/80006430/unable-to-create-new-xcode-cloud-workflow-on-xcode-27)).

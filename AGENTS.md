@@ -26,6 +26,10 @@ avec celui de la CLI et échoue à la moindre différence.
 `xcodegen generate`** — le `.xcodeproj` est committé malgré sa génération, pour
 qu'Xcode Cloud trouve le projet et son schéma.
 
+**Régénérer juste avant de commiter, Xcode fermé.** Xcode réenregistre le
+projet ouvert à sa façon, et le premier commit est parti avec cette version
+réécrite au lieu de la sortie d'XcodeGen.
+
 ```sh
 xcodebuild -project Pointage.xcodeproj -scheme Pointage-iOS \
   -destination 'platform=iOS Simulator,name=iPhone 16 (référence)' test

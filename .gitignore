@@ -17,6 +17,9 @@ xcuserdata/
 # reste couvert par la règle plus haut.
 *.xcworkspace
 !Pointage.xcodeproj/project.xcworkspace/
+# Écrit par l'assistant Xcode Cloud de Xcode 27 pour relier le projet au produit.
+# Les builds n'en ont pas besoin : le premier est passé sans lui.
+xcodecloud/
 
 # Build
 build/

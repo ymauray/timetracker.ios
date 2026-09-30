@@ -10,11 +10,6 @@ options:
   developmentLanguage: fr
   createIntermediateGroups: true
 
-packages:
-  GRDB:
-    url: https://github.com/groue/GRDB.swift
-    from: "7.0.0"
-
 settings:
   base:
     DEVELOPMENT_TEAM: WFMP87LTRX
@@ -42,8 +37,6 @@ targets:
     sources:
       - path: Sources
       - path: Resources
-    dependencies:
-      - package: GRDB
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: ch.yannickmauray.pointage
@@ -67,7 +60,6 @@ targets:
         buildPhase: resources
     dependencies:
       - target: Pointage-iOS
-      - package: GRDB
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: ch.yannickmauray.pointage.tests
