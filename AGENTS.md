@@ -31,7 +31,7 @@ projet ouvert à sa façon, et le premier commit est parti avec cette version
 réécrite au lieu de la sortie d'XcodeGen.
 
 ```sh
-xcodebuild -project Pointage.xcodeproj -scheme Pointage-iOS \
+xcodebuild -project Pointage.xcodeproj -scheme Pointage \
   -destination 'platform=iOS Simulator,name=iPhone 16 (référence)' test
 ```
 

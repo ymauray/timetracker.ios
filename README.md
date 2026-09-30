@@ -42,7 +42,7 @@ projet et son schéma partagé dans le dépôt.
 Tests :
 
 ```sh
-xcodebuild -project Pointage.xcodeproj -scheme Pointage-iOS \
+xcodebuild -project Pointage.xcodeproj -scheme Pointage \
   -destination 'platform=iOS Simulator,name=iPhone 16 (référence)' test
 ```
 

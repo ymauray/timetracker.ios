@@ -15,9 +15,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "13A2301A84611C37C57826E2"
-               BuildableName = "Pointage-iOS.app"
-               BlueprintName = "Pointage-iOS"
+               BlueprintIdentifier = "5F043B2F81B855258F4E9C0C"
+               BuildableName = "Pointage.app"
+               BlueprintName = "Pointage"
                ReferencedContainer = "container:Pointage.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -33,9 +33,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "13A2301A84611C37C57826E2"
-            BuildableName = "Pointage-iOS.app"
-            BlueprintName = "Pointage-iOS"
+            BlueprintIdentifier = "5F043B2F81B855258F4E9C0C"
+            BuildableName = "Pointage.app"
+            BlueprintName = "Pointage"
             ReferencedContainer = "container:Pointage.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -69,9 +69,9 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "13A2301A84611C37C57826E2"
-            BuildableName = "Pointage-iOS.app"
-            BlueprintName = "Pointage-iOS"
+            BlueprintIdentifier = "5F043B2F81B855258F4E9C0C"
+            BuildableName = "Pointage.app"
+            BlueprintName = "Pointage"
             ReferencedContainer = "container:Pointage.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -86,9 +86,9 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "13A2301A84611C37C57826E2"
-            BuildableName = "Pointage-iOS.app"
-            BlueprintName = "Pointage-iOS"
+            BlueprintIdentifier = "5F043B2F81B855258F4E9C0C"
+            BuildableName = "Pointage.app"
+            BlueprintName = "Pointage"
             ReferencedContainer = "container:Pointage.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

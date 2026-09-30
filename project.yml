@@ -31,7 +31,7 @@ settings:
     INFOPLIST_KEY_ITSAppUsesNonExemptEncryption: NO
 
 targets:
-  Pointage-iOS:
+  Pointage:
     type: application
     platform: iOS
     sources:
@@ -40,7 +40,6 @@ targets:
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: ch.yannickmauray.pointage
-        PRODUCT_NAME: Pointage
         TARGETED_DEVICE_FAMILY: "1"  # iPhone seul
         INFOPLIST_KEY_UILaunchScreen_Generation: YES
         INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone:
@@ -59,20 +58,16 @@ targets:
         type: folder
         buildPhase: resources
     dependencies:
-      - target: Pointage-iOS
+      - target: Pointage
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: ch.yannickmauray.pointage.tests
-        # XcodeGen déduit l'hôte de test du nom de la cible ; il faut le corriger
-        # ici, le produit s'appelant Pointage et la cible Pointage-iOS.
-        TEST_HOST: $(BUILT_PRODUCTS_DIR)/Pointage.app/Pointage
-        BUNDLE_LOADER: $(TEST_HOST)
 
 schemes:
-  Pointage-iOS:
+  Pointage:
     build:
       targets:
-        Pointage-iOS: all
+        Pointage: all
     test:
       targets: [PointageTests]
       gatherCoverageData: true
