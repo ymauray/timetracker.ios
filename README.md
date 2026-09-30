@@ -53,9 +53,10 @@ Deux pipelines, qui ne valident pas la même chose :
 - **GitHub Actions** (`.github/workflows/ios.yml`) se déclenche sur toutes les
   branches : régénération par XcodeGen, compilation, tests. Un second job compare
   `Tests/Fixtures/` avec celles de la branche `main` de la CLI.
-- **Xcode Cloud** (`ci_scripts/ci_post_clone.sh`) surveille `main` : il ajoute
-  la résolution figée des paquets, la signature et la livraison TestFlight.
-  **Toute fusion sur `main` livre donc une build.**
+- **Xcode Cloud** (`ci_scripts/ci_post_clone.sh`) surveille `pre-release` : il
+  ajoute la résolution figée des paquets, la signature et la livraison
+  TestFlight. Les fusions sur `main` ne livrent rien ; une version part sur
+  TestFlight quand `main` est amenée sur `pre-release`.
 
 Le numéro de build vient d'Xcode Cloud, pas de `project.yml` : le script de
 post-clone y reporte `$CI_BUILD_NUMBER` avant de régénérer le projet.

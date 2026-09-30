@@ -128,7 +128,8 @@ Reprendre au plus près `project.yml`, `.github/workflows/ios.yml`,
   `INFOPLIST_KEY_ITSAppUsesNonExemptEncryption: NO`, `MARKETING_VERSION: "1.0.0"`.
 - `ci_post_clone.sh` : installe XcodeGen, reporte `$CI_BUILD_NUMBER` dans
   `CURRENT_PROJECT_VERSION`, régénère le projet.
-- Xcode Cloud surveille `main` : toute fusion livre une build TestFlight.
+- Xcode Cloud surveille `pre-release` : une version part sur TestFlight quand
+  `main` y est amenée, et non à chaque fusion sur `main`.
 - GitHub Actions sur toutes les branches : XcodeGen, compilation, tests sur
   simulateur, `CODE_SIGNING_ALLOWED=NO`. Plus le job de comparaison des fixtures.
 - GRDB 7 pour le stockage, avec `DatabaseMigrator` (pas de base héritée à

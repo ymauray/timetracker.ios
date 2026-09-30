@@ -52,8 +52,10 @@ pas les suggérer non plus, s'identifier comme co-auteur, messages en français 
 format *conventional commits*.
 
 `main` est protégée. Le travail passe par une branche puis une *pull request*,
-fusionnée en squash ou en rebase, jamais par un commit de fusion. **Une fusion
-sur `main` déclenche une livraison TestFlight** : ce n'est pas un geste anodin.
+fusionnée en squash ou en rebase, jamais par un commit de fusion.
+
+**Xcode Cloud surveille `pre-release`, pas `main`.** Tout ce qui arrive sur
+`pre-release` part sur TestFlight : n'y pousser que sur demande explicite.
 
 ## Données
 
