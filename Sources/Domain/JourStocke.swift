@@ -13,6 +13,17 @@ struct JourStocke: Equatable, Sendable {
         self.absence = absence
     }
 
+    /// Une journée saisie à la main, rangée comme si elle avait été pointée.
+    init(_ journee: Journee) {
+        switch journee.contenu {
+        case let .travail(arrivee, pause, depart):
+            let heuresPause = pause.map { [$0.lowerBound, $0.upperBound] } ?? []
+            self.init(date: journee.date, heures: [arrivee] + heuresPause + [depart])
+        case let .absence(absence):
+            self.init(date: journee.date, absence: absence)
+        }
+    }
+
     enum Etat: Equatable, Sendable {
         case vide
         /// Une ou trois heures : la journée n'a pas de départ.

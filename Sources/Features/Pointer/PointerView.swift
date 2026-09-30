@@ -25,6 +25,7 @@ struct PointerView: View {
             }
             .onChange(of: contexte.date) { model.rafraichir() }
         }
+        .onAppear { model.rafraichir() }
         .onChange(of: scenePhase) { _, phase in
             if phase == .active { model.rafraichir() }
         }

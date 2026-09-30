@@ -2,15 +2,20 @@ import SwiftUI
 
 @main
 struct PointageApp: App {
-    @State private var pointer = Result {
-        PointerModel(repository: JoursRepository(base: try Base.ouvrir()), horloge: HorlogeSysteme(), preferences: .shared)
-    }
+    @State private var ecrans = Result { try Ecrans() }
 
     var body: some Scene {
         WindowGroup {
-            switch pointer {
-            case let .success(model):
-                PointerView(model: model)
+            switch ecrans {
+            case let .success(ecrans):
+                TabView {
+                    Tab("Pointer", systemImage: "hand.tap") {
+                        PointerView(model: ecrans.pointer)
+                    }
+                    Tab("Historique", systemImage: "calendar") {
+                        HistoriqueView(model: ecrans.historique)
+                    }
+                }
             case let .failure(erreur):
                 ContentUnavailableView(
                     "Base de données inaccessible",
@@ -19,5 +24,19 @@ struct PointageApp: App {
                 )
             }
         }
+    }
+}
+
+/// Les modèles des écrans, branchés sur la même base.
+@MainActor
+private struct Ecrans {
+    let pointer: PointerModel
+    let historique: HistoriqueModel
+
+    init() throws {
+        let repository = JoursRepository(base: try Base.ouvrir())
+        let horloge = HorlogeSysteme()
+        pointer = PointerModel(repository: repository, horloge: horloge, preferences: .shared)
+        historique = HistoriqueModel(repository: repository, horloge: horloge, preferences: .shared)
     }
 }

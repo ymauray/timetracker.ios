@@ -11,6 +11,7 @@
 		11D3EDADC8437D35580DD38A /* GRDB in Frameworks */ = {isa = PBXBuildFile; productRef = 225B9EBF56DA2568BCA6556A /* GRDB */; };
 		20EE85270C14DADD06E675BB /* ReleveParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9F1612FB2544D0E96511FBA /* ReleveParser.swift */; };
 		31D5AB5C98FAF429F2220B76 /* Fixtures in Resources */ = {isa = PBXBuildFile; fileRef = 851BDD2C16B7E5F3CDC1D16F /* Fixtures */; };
+		4CD7A6FEC0976AC4D9CBE3A2 /* Historique.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D7791FD0CA77190E95FFA3 /* Historique.swift */; };
 		4F26ED26F59E97861A80BB56 /* ReleveWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB34558445DC95F6243E1555 /* ReleveWriter.swift */; };
 		50388B520813B83D9B5D2A35 /* Affichage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EFE00962C3999DEDA26D663 /* Affichage.swift */; };
 		5564648CE2C22A3C50938C14 /* Formats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92C6D12061FCE29055B4F7B7 /* Formats.swift */; };
@@ -20,16 +21,22 @@
 		7992D334146B2A14DD716401 /* Journee.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B6F502B9B786D8DADE5ABD /* Journee.swift */; };
 		7EC0DE388E8A768B423AB0A1 /* FixturesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492290AB55150457D0A7AA72 /* FixturesTests.swift */; };
 		83A6BB4A912BD170252F75D1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C917E018A5E1111552652F41 /* Assets.xcassets */; };
+		859A3F4D779C3E4A3CCA075C /* HistoriqueTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCA726E9EEFDA52098F21E94 /* HistoriqueTests.swift */; };
+		8742D6FB76D0D20E23C2BEDC /* EditionJourView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 819A8C895BAE7EB32E458D52 /* EditionJourView.swift */; };
 		9269CD83D3CBD056F47EA7EF /* PointageApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A100A3747F42D3B607284AB /* PointageApp.swift */; };
+		96143E5315BF55776CDE8EA2 /* Selecteurs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2193ACF4196D90FD9F2AD9C4 /* Selecteurs.swift */; };
 		A46B1FC92DAC84928870996C /* PointerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CAA87D7CF0BFADA1D84ABBE /* PointerModel.swift */; };
 		A797B03904DF87015E4B244D /* Calculateur.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60238B002D1C755FF90CF509 /* Calculateur.swift */; };
 		AA424F65C31DAA260C3DEAF6 /* Base.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E6F05CFF4A8B03078EAE2D /* Base.swift */; };
 		AAD42CB9DDB425844C8D746C /* GRDB in Frameworks */ = {isa = PBXBuildFile; productRef = 3CC259AA4EA5B1D8D740FEEC /* GRDB */; };
 		B243AB79FF5F8A06A8B9F675 /* JoursRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92C3648DA58D3B6D5852E439 /* JoursRepository.swift */; };
+		D80B177096733657DD643717 /* HistoriqueModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEC95DD6EF31A844D6848DF6 /* HistoriqueModel.swift */; };
 		DBC62D5276350C378D19D7D1 /* PointerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BE336145CF601058ACDCBC1 /* PointerView.swift */; };
 		E00F6632C9A78D4ABDF6B8ED /* DateCivileTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B78CA66C95489B522FCB6AC /* DateCivileTests.swift */; };
+		E4EC2567E0B51C358CA23F84 /* EditionJour.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCD681595923F0C0587D4F4 /* EditionJour.swift */; };
 		E5B0D7111AA9AAECF66AA11F /* DateCivile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85A073790BD485BD913F6DF4 /* DateCivile.swift */; };
 		EBFE5C306DE9D75AAFF65FBF /* Bilan.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC524F1B401C57213CC9F5B3 /* Bilan.swift */; };
+		EDE5B75ACBF7AA47BA7F5498 /* HistoriqueView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 157CC0699B1B7A774586F54D /* HistoriqueView.swift */; };
 		FBC66614CE5C67B4AE08E564 /* Horloge.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94AE210C5BDB549362CDD94 /* Horloge.swift */; };
 /* End PBXBuildFile section */
 
@@ -45,7 +52,9 @@
 
 /* Begin PBXFileReference section */
 		1260E94C139E1FB7C7A014C8 /* ValidationJournee.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationJournee.swift; sourceTree = "<group>"; };
+		157CC0699B1B7A774586F54D /* HistoriqueView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoriqueView.swift; sourceTree = "<group>"; };
 		16B6F502B9B786D8DADE5ABD /* Journee.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Journee.swift; sourceTree = "<group>"; };
+		2193ACF4196D90FD9F2AD9C4 /* Selecteurs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Selecteurs.swift; sourceTree = "<group>"; };
 		2B78CA66C95489B522FCB6AC /* DateCivileTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateCivileTests.swift; sourceTree = "<group>"; };
 		2BE336145CF601058ACDCBC1 /* PointerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointerView.swift; sourceTree = "<group>"; };
 		2F99A837020928BEA8576DEB /* PointerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointerTests.swift; sourceTree = "<group>"; };
@@ -55,6 +64,7 @@
 		55BD64E778C29090CC96D5F6 /* JourStocke.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JourStocke.swift; sourceTree = "<group>"; };
 		60238B002D1C755FF90CF509 /* Calculateur.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calculateur.swift; sourceTree = "<group>"; };
 		7CAA87D7CF0BFADA1D84ABBE /* PointerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointerModel.swift; sourceTree = "<group>"; };
+		819A8C895BAE7EB32E458D52 /* EditionJourView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditionJourView.swift; sourceTree = "<group>"; };
 		851BDD2C16B7E5F3CDC1D16F /* Fixtures */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Fixtures; path = Tests/Fixtures; sourceTree = SOURCE_ROOT; };
 		85A073790BD485BD913F6DF4 /* DateCivile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateCivile.swift; sourceTree = "<group>"; };
 		92C3648DA58D3B6D5852E439 /* JoursRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoursRepository.swift; sourceTree = "<group>"; };
@@ -62,9 +72,13 @@
 		98E6F05CFF4A8B03078EAE2D /* Base.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Base.swift; sourceTree = "<group>"; };
 		9A100A3747F42D3B607284AB /* PointageApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointageApp.swift; sourceTree = "<group>"; };
 		9D59B0E010B349FD31D7AAF0 /* AppPreferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppPreferences.swift; sourceTree = "<group>"; };
+		AEC95DD6EF31A844D6848DF6 /* HistoriqueModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoriqueModel.swift; sourceTree = "<group>"; };
+		BCA726E9EEFDA52098F21E94 /* HistoriqueTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoriqueTests.swift; sourceTree = "<group>"; };
 		C917E018A5E1111552652F41 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C94AE210C5BDB549362CDD94 /* Horloge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Horloge.swift; sourceTree = "<group>"; };
 		EC524F1B401C57213CC9F5B3 /* Bilan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bilan.swift; sourceTree = "<group>"; };
+		EFCD681595923F0C0587D4F4 /* EditionJour.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditionJour.swift; sourceTree = "<group>"; };
+		F3D7791FD0CA77190E95FFA3 /* Historique.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Historique.swift; sourceTree = "<group>"; };
 		F9F1612FB2544D0E96511FBA /* ReleveParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReleveParser.swift; sourceTree = "<group>"; };
 		FB34558445DC95F6243E1555 /* ReleveWriter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReleveWriter.swift; sourceTree = "<group>"; };
 		FB4B8A2063B92F168206BFD6 /* Pointage.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = Pointage.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -124,9 +138,22 @@
 			path = Data;
 			sourceTree = "<group>";
 		};
+		115F0E5E73BAF8292BECADFE /* Historique */ = {
+			isa = PBXGroup;
+			children = (
+				EFCD681595923F0C0587D4F4 /* EditionJour.swift */,
+				819A8C895BAE7EB32E458D52 /* EditionJourView.swift */,
+				F3D7791FD0CA77190E95FFA3 /* Historique.swift */,
+				AEC95DD6EF31A844D6848DF6 /* HistoriqueModel.swift */,
+				157CC0699B1B7A774586F54D /* HistoriqueView.swift */,
+			);
+			path = Historique;
+			sourceTree = "<group>";
+		};
 		1DCACEC5792A1AC83734248E /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				115F0E5E73BAF8292BECADFE /* Historique */,
 				241B991FAFEA9AB0A0A04B14 /* Pointer */,
 			);
 			path = Features;
@@ -195,6 +222,7 @@
 				2B78CA66C95489B522FCB6AC /* DateCivileTests.swift */,
 				851BDD2C16B7E5F3CDC1D16F /* Fixtures */,
 				492290AB55150457D0A7AA72 /* FixturesTests.swift */,
+				BCA726E9EEFDA52098F21E94 /* HistoriqueTests.swift */,
 				2F99A837020928BEA8576DEB /* PointerTests.swift */,
 			);
 			path = Tests;
@@ -204,6 +232,7 @@
 			isa = PBXGroup;
 			children = (
 				4EFE00962C3999DEDA26D663 /* Affichage.swift */,
+				2193ACF4196D90FD9F2AD9C4 /* Selecteurs.swift */,
 			);
 			path = Design;
 			sourceTree = "<group>";
@@ -318,6 +347,7 @@
 			files = (
 				E00F6632C9A78D4ABDF6B8ED /* DateCivileTests.swift in Sources */,
 				7EC0DE388E8A768B423AB0A1 /* FixturesTests.swift in Sources */,
+				859A3F4D779C3E4A3CCA075C /* HistoriqueTests.swift in Sources */,
 				5DE5DA32A63DCB317E9EC2AF /* PointerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -332,7 +362,12 @@
 				EBFE5C306DE9D75AAFF65FBF /* Bilan.swift in Sources */,
 				A797B03904DF87015E4B244D /* Calculateur.swift in Sources */,
 				E5B0D7111AA9AAECF66AA11F /* DateCivile.swift in Sources */,
+				E4EC2567E0B51C358CA23F84 /* EditionJour.swift in Sources */,
+				8742D6FB76D0D20E23C2BEDC /* EditionJourView.swift in Sources */,
 				5564648CE2C22A3C50938C14 /* Formats.swift in Sources */,
+				4CD7A6FEC0976AC4D9CBE3A2 /* Historique.swift in Sources */,
+				D80B177096733657DD643717 /* HistoriqueModel.swift in Sources */,
+				EDE5B75ACBF7AA47BA7F5498 /* HistoriqueView.swift in Sources */,
 				FBC66614CE5C67B4AE08E564 /* Horloge.swift in Sources */,
 				6E171897B7A45B06849D4638 /* JourStocke.swift in Sources */,
 				7992D334146B2A14DD716401 /* Journee.swift in Sources */,
@@ -342,6 +377,7 @@
 				DBC62D5276350C378D19D7D1 /* PointerView.swift in Sources */,
 				20EE85270C14DADD06E675BB /* ReleveParser.swift in Sources */,
 				4F26ED26F59E97861A80BB56 /* ReleveWriter.swift in Sources */,
+				96143E5315BF55776CDE8EA2 /* Selecteurs.swift in Sources */,
 				106FC346DAF163C97E643F32 /* ValidationJournee.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
