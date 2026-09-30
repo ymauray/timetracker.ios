@@ -2,17 +2,22 @@ import SwiftUI
 
 @main
 struct PointageApp: App {
+    @State private var pointer = Result {
+        PointerModel(repository: JoursRepository(base: try Base.ouvrir()), horloge: HorlogeSysteme(), preferences: .shared)
+    }
+
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            switch pointer {
+            case let .success(model):
+                PointerView(model: model)
+            case let .failure(erreur):
+                ContentUnavailableView(
+                    "Base de données inaccessible",
+                    systemImage: "externaldrive.badge.exclamationmark",
+                    description: Text(erreur.localizedDescription)
+                )
+            }
         }
-    }
-}
-
-/// Écran provisoire, le temps de valider la chaîne de livraison. Remplacé par
-/// l'écran Pointer à l'étape 4.
-struct ContentView: View {
-    var body: some View {
-        ContentUnavailableView("Pointage", systemImage: "clock.badge.checkmark")
     }
 }

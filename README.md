@@ -62,8 +62,7 @@ Deux pipelines, qui ne valident pas la même chose :
 Le numéro de build vient d'Xcode Cloud, pas de `project.yml` : le script de
 post-clone y reporte `$CI_BUILD_NUMBER` avant de régénérer le projet.
 
-Le projet n'a pour l'instant aucune dépendance. Dès qu'un paquet Swift entre
-(GRDB, à l'étape 4), `Package.resolved` doit être versionné dans
+Seule dépendance : GRDB. `Package.resolved` doit rester versionné dans
 `Pointage.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/` : Xcode Cloud
 désactive la résolution automatique des paquets et s'arrête sans lui, ce que
 GitHub Actions ne peut pas détecter.
