@@ -7,10 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		106FC346DAF163C97E643F32 /* ValidationJournee.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1260E94C139E1FB7C7A014C8 /* ValidationJournee.swift */; };
+		20EE85270C14DADD06E675BB /* ReleveParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9F1612FB2544D0E96511FBA /* ReleveParser.swift */; };
 		31D5AB5C98FAF429F2220B76 /* Fixtures in Resources */ = {isa = PBXBuildFile; fileRef = 851BDD2C16B7E5F3CDC1D16F /* Fixtures */; };
+		4F26ED26F59E97861A80BB56 /* ReleveWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB34558445DC95F6243E1555 /* ReleveWriter.swift */; };
+		5564648CE2C22A3C50938C14 /* Formats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92C6D12061FCE29055B4F7B7 /* Formats.swift */; };
+		7992D334146B2A14DD716401 /* Journee.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B6F502B9B786D8DADE5ABD /* Journee.swift */; };
 		7EC0DE388E8A768B423AB0A1 /* FixturesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492290AB55150457D0A7AA72 /* FixturesTests.swift */; };
 		83A6BB4A912BD170252F75D1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C917E018A5E1111552652F41 /* Assets.xcassets */; };
 		9269CD83D3CBD056F47EA7EF /* PointageApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A100A3747F42D3B607284AB /* PointageApp.swift */; };
+		A797B03904DF87015E4B244D /* Calculateur.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60238B002D1C755FF90CF509 /* Calculateur.swift */; };
+		E00F6632C9A78D4ABDF6B8ED /* DateCivileTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B78CA66C95489B522FCB6AC /* DateCivileTests.swift */; };
+		E5B0D7111AA9AAECF66AA11F /* DateCivile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85A073790BD485BD913F6DF4 /* DateCivile.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -24,15 +32,37 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1260E94C139E1FB7C7A014C8 /* ValidationJournee.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationJournee.swift; sourceTree = "<group>"; };
+		16B6F502B9B786D8DADE5ABD /* Journee.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Journee.swift; sourceTree = "<group>"; };
+		2B78CA66C95489B522FCB6AC /* DateCivileTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateCivileTests.swift; sourceTree = "<group>"; };
 		492290AB55150457D0A7AA72 /* FixturesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FixturesTests.swift; sourceTree = "<group>"; };
 		4B4C53C59E99F91764C029FD /* PointageTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = PointageTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		60238B002D1C755FF90CF509 /* Calculateur.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calculateur.swift; sourceTree = "<group>"; };
 		851BDD2C16B7E5F3CDC1D16F /* Fixtures */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Fixtures; path = Tests/Fixtures; sourceTree = SOURCE_ROOT; };
+		85A073790BD485BD913F6DF4 /* DateCivile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateCivile.swift; sourceTree = "<group>"; };
+		92C6D12061FCE29055B4F7B7 /* Formats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formats.swift; sourceTree = "<group>"; };
 		9A100A3747F42D3B607284AB /* PointageApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointageApp.swift; sourceTree = "<group>"; };
 		C917E018A5E1111552652F41 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F9F1612FB2544D0E96511FBA /* ReleveParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReleveParser.swift; sourceTree = "<group>"; };
+		FB34558445DC95F6243E1555 /* ReleveWriter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReleveWriter.swift; sourceTree = "<group>"; };
 		FB4B8A2063B92F168206BFD6 /* Pointage.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = Pointage.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
+		08D482C675C73BB7E462288C /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				60238B002D1C755FF90CF509 /* Calculateur.swift */,
+				85A073790BD485BD913F6DF4 /* DateCivile.swift */,
+				92C6D12061FCE29055B4F7B7 /* Formats.swift */,
+				16B6F502B9B786D8DADE5ABD /* Journee.swift */,
+				F9F1612FB2544D0E96511FBA /* ReleveParser.swift */,
+				FB34558445DC95F6243E1555 /* ReleveWriter.swift */,
+				1260E94C139E1FB7C7A014C8 /* ValidationJournee.swift */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
 		3D4B1848E973BEF4F0513147 /* App */ = {
 			isa = PBXGroup;
 			children = (
@@ -54,6 +84,7 @@
 			isa = PBXGroup;
 			children = (
 				3D4B1848E973BEF4F0513147 /* App */,
+				08D482C675C73BB7E462288C /* Domain */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -79,6 +110,7 @@
 		E72B2B96824359F7A90C97B1 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				2B78CA66C95489B522FCB6AC /* DateCivileTests.swift */,
 				851BDD2C16B7E5F3CDC1D16F /* Fixtures */,
 				492290AB55150457D0A7AA72 /* FixturesTests.swift */,
 			);
@@ -186,6 +218,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E00F6632C9A78D4ABDF6B8ED /* DateCivileTests.swift in Sources */,
 				7EC0DE388E8A768B423AB0A1 /* FixturesTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -194,7 +227,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A797B03904DF87015E4B244D /* Calculateur.swift in Sources */,
+				E5B0D7111AA9AAECF66AA11F /* DateCivile.swift in Sources */,
+				5564648CE2C22A3C50938C14 /* Formats.swift in Sources */,
+				7992D334146B2A14DD716401 /* Journee.swift in Sources */,
 				9269CD83D3CBD056F47EA7EF /* PointageApp.swift in Sources */,
+				20EE85270C14DADD06E675BB /* ReleveParser.swift in Sources */,
+				4F26ED26F59E97861A80BB56 /* ReleveWriter.swift in Sources */,
+				106FC346DAF163C97E643F32 /* ValidationJournee.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
