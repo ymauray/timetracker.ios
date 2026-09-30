@@ -128,16 +128,12 @@ private struct ChampDuree: View {
         .tint(.primary)
 
         if ouvert == titre {
-            HStack(spacing: 0) {
-                Picker("Heures", selection: Binding(get: { minutes / 60 }, set: { minutes = $0 * 60 + minutes % 60 })) {
-                    ForEach(0..<100) { Text("\($0) h").tag($0) }
-                }
-                Picker("Minutes", selection: Binding(get: { minutes % 60 }, set: { minutes = minutes / 60 * 60 + $0 })) {
-                    ForEach(0..<60) { Text("\($0) min").tag($0) }
-                }
-            }
-            .pickerStyle(.wheel)
-            .frame(height: 150)
+            RouesHeuresMinutes(
+                minutes: $minutes,
+                heures: 0..<100,
+                libelleHeures: { "\($0) h" },
+                libelleMinutes: { "\($0) min" }
+            )
         }
     }
 }

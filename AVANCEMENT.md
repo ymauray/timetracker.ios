@@ -65,6 +65,10 @@ que l'app.
   l'écran d'édition en français courant.
 - **Édition d'une journée en cours** : elle ne s'enregistre qu'avec arrivée et
   départ, comme dans `releve.md` ; avant, c'est le bouton Pointer qui la mène.
+- **Sélecteurs de minutes** : de 5 en 5, dans l'édition comme dans les
+  réglages. Une valeur hors pas (pointée au bouton, importée, ou les 8h12 par
+  défaut) reste affichée sans être arrondie. Le bouton Pointer garde la minute
+  exacte.
 - **Journée terminée** : le bouton reste actif et un appui affiche le refus,
   comme un cinquième pointage.
 - **Appui accidentel** : un bouton « Annuler le dernier pointage » sur l'écran
