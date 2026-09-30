@@ -48,7 +48,8 @@ d'absence. Pas de seconde pause, pas de journée à cheval sur minuit.
   travaillé compte donc entièrement en plus.
 - Un jour ouvré sans rien entre le premier et le dernier jour renseignés compte en
   déficit d'une journée entière.
-- Semaines ISO 8601 (`Calendar(identifier: .iso8601)`).
+- Semaines ISO 8601, calculées sur des dates civiles sans fuseau (`DateCivile`)
+  plutôt qu'avec `Calendar` et `Date`.
 - Le solde mensuel se cumule de mois en mois sans remise à zéro. La tolérance
   s'évalue sur ce cumul.
 - Validations d'une journée (reprises de `ReleveParser`) : arrivée et départ
@@ -59,11 +60,9 @@ d'absence. Pas de seconde pause, pas de journée à cheval sur minuit.
 La pause minimum appliquée à un jour sans pause et la tolérance configurable
 (clé `tolerance` du front-matter) sont livrées dans la CLI (commit `fea8f91`).
 
-⚠️ Le seuil de pause est **nouveau** et doit d'abord être livré dans la CLI
-(clé `seuil_pause` du front-matter, fixture couvrant 4h59, 5h00 et un seuil
-modifié). Tant que ce n'est pas fait, la CLI ne sert pas de référence sur ce
-point. Une CLI plus ancienne ignore les clés inconnues : elle lirait l'export
-sans erreur, mais retirerait la pause minimum aux journées courtes.
+Le seuil de pause est livré dans la CLI (clé `seuil_pause`, `1c968f9`). Une CLI
+plus ancienne ignore les clés inconnues : elle lirait l'export sans erreur, mais
+retirerait la pause minimum aux journées courtes.
 
 ## Le bouton Pointer
 
@@ -149,8 +148,8 @@ seul, police système.
 ## Étapes
 
 1. Dans la CLI : pause minimum sur les jours sans pause, tolérance configurable,
-   fixtures sous `tests/TimeTracker.Tests/Fixtures/`. Fait (`fea8f91`), sauf le
-   seuil de pause, à livrer avant l'étape 3.
+   fixtures sous `tests/TimeTracker.Tests/Fixtures/`, seuil de pause. Fait
+   (`fea8f91`, `1c968f9`).
 2. Ici : squelette XcodeGen, `ci_scripts`, `ios.yml`, `AGENTS.md`, puis un premier
    build TestFlight vide pour valider la chaîne de livraison.
 3. `Domain/` en Swift, qui doit passer les fixtures copiées.

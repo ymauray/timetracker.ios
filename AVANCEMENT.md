@@ -17,41 +17,15 @@ provisoire. Première build livrée sur TestFlight et installée le 30 septembre
 2026. Le défaut de l'assistant Xcode Cloud d'Xcode 27 et son contournement sont
 dans le [`README.md`](README.md).
 
+**1 bis. Seuil de pause** — clé `seuil_pause` dans la CLI, fixtures
+`journee-courte` et `seuil-pause-configure` (`1c968f9` dans `ymauray/timetracker`).
+
+**3. Domaine** — `Sources/Domain/` : `DateCivile` (dates sans fuseau, semaines
+ISO par calcul), `ReleveParser` (messages de la CLI au caractère près),
+`ValidationJournee`, `Calculateur`, `ReleveWriter`. Les cinq fixtures passent,
+ainsi qu'un aller-retour export → relecture sur chacune.
+
 ## À faire
-
-### 1 bis. Seuil de pause, dans la CLI
-
-À livrer avant l'étape 3, la CLI restant la référence du calcul.
-
-- `ConfigParser` : clé `seuil_pause`, 5h par défaut.
-- `TimeCalculator` : présence strictement inférieure au seuil → seule la pause
-  réelle est décomptée.
-- Fixture `journee-courte` : 4h59 sans pause, 5h00 sans pause, 4h avec 15 min
-  de pause réelle, seuil modifié dans le front-matter.
-- `seuilPause` ajouté au bloc `config` de chaque `attendu.json`, les trois
-  fixtures existantes comprises.
-
-La fusion dans la CLI passe d'abord, la copie ici ensuite. Entre les deux, le
-job de comparaison des fixtures échoue : c'est attendu.
-
-### 3. `Domain/` en Swift
-
-Sans SwiftUI ni GRDB. Durées en minutes entières, dates en structure
-année/mois/jour, jamais en `Date`.
-
-- Modèles : `Reglages` (quatre durées), `Journee` (quatre heures facultatives ou
-  un code d'absence ; `CP` lu comme `Conges`).
-- `ReleveParser` : front-matter puis tableau, avec les messages d'erreur de la
-  CLI au caractère près, absence d'accents comprise.
-- `Calculateur` : jours (pause décomptée, théorique, réalisé), jours non
-  renseignés, semaines ISO avec écart cumulé, mois avec solde cumulé et
-  dépassement de tolérance.
-- `ReleveWriter` : export, dates `j.m.aaaa`, heures `8h50`.
-- Validation d'une journée : une seule fonction, partagée par le parser et
-  l'écran d'édition, pour des messages identiques.
-- Tests : un test paramétré par dossier de fixture, qui compare tout
-  `attendu.json` ; un aller-retour lecture → écriture → lecture sur chaque
-  fixture.
 
 ### 4. Pointages, stockage, écran Pointer
 
