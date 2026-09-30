@@ -48,12 +48,17 @@ final class ParcoursTests: XCTestCase {
         XCTAssertFalse(enregistrer.isEnabled)
         XCTAssertTrue(app.staticTexts["Renseignez l'arrivée et le départ, ou choisissez une absence."].exists)
 
+        // Le départ s'ajoute à 17h00 et déplie ses roues : minutes de 5 en 5.
         app.buttons["Ajouter départ"].tap()
         XCTAssertTrue(enregistrer.isEnabled)
+        let minutes = app.pickerWheels.element(boundBy: 1)
+        XCTAssertTrue(minutes.waitForExistence(timeout: 2))
+        minutes.adjust(toPickerWheelValue: "15")
+        XCTAssertTrue(app.buttons["Départ : 17h15"].exists)
         enregistrer.tap()
 
-        // 8h00–17h00, 30 min de pause décomptées : 8h30 pour 8h12.
-        XCTAssertTrue(app.staticTexts["+0h18"].waitForExistence(timeout: 2))
+        // 8h00–17h15, 30 min de pause décomptées : 8h45 pour 8h12.
+        XCTAssertTrue(app.staticTexts["+0h33"].waitForExistence(timeout: 2))
 
         // Arrivée et départ : deux heures, le bouton propose encore une fin de
         // pause, qui ferait du départ un début de pause (voir SPECS.md).

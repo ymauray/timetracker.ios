@@ -8,6 +8,7 @@ struct EditionJourView: View {
     let supprimer: () -> Void
     @Environment(\.dismiss) private var fermer
     @State private var confirmerSuppression = false
+    @State private var champOuvert: String?
 
     var body: some View {
         NavigationStack {
@@ -22,12 +23,12 @@ struct EditionJourView: View {
                 switch edition.mode {
                 case .travail:
                     Section {
-                        ChampHeure(titre: "Arrivée", minutes: $edition.arrivee, parDefaut: 8 * 60)
-                        ChampHeure(titre: "Départ", minutes: $edition.depart, parDefaut: 17 * 60)
+                        ChampHeure(titre: "Arrivée", minutes: $edition.arrivee, parDefaut: 8 * 60, ouvert: $champOuvert)
+                        ChampHeure(titre: "Départ", minutes: $edition.depart, parDefaut: 17 * 60, ouvert: $champOuvert)
                     }
                     Section("Pause") {
-                        ChampHeure(titre: "Début pause", minutes: $edition.debutPause, parDefaut: 12 * 60)
-                        ChampHeure(titre: "Fin pause", minutes: $edition.finPause, parDefaut: 12 * 60 + 30)
+                        ChampHeure(titre: "Début pause", minutes: $edition.debutPause, parDefaut: 12 * 60, ouvert: $champOuvert)
+                        ChampHeure(titre: "Fin pause", minutes: $edition.finPause, parDefaut: 12 * 60 + 30, ouvert: $champOuvert)
                     }
                 case .absence:
                     Picker("Motif", selection: $edition.absence) {
