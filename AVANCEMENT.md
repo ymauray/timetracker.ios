@@ -35,14 +35,13 @@ leur écart, journées sans départ et jours ouvrés vides mis en évidence ; fe
 d'édition (heures ou absence), ajout d'une journée oubliée, suppression. Écrans
 vérifiés en clair et en sombre.
 
+**6. Réglages** — onglet Réglages : les quatre durées (jusqu'à 99h59), avec
+l'avertissement du recalcul ; export de `releve.md` par le partage iOS, bloqué
+tant qu'une journée passée n'a pas de départ ; import avec les erreurs de la CLI
+ligne par ligne, puis confirmation. L'export de chaque fixture a été relu par la
+CLI, soldes identiques.
+
 ## À faire
-
-### 6. Réglages, import et export
-
-- Quatre réglages dans `AppPreferences` (UserDefaults), avec l'avertissement
-  que les modifier recalcule tout l'historique.
-- Export : `releve.md` produit par `ReleveWriter`, via le partage iOS.
-- Import : même parser, erreurs affichées ligne par ligne comme dans la CLI.
 
 ### 7. Plus tard
 
@@ -56,7 +55,8 @@ que l'app.
 - **Journée passée restée incomplète** : exclue du calcul et signalée.
 - **Export avec une journée incomplète** : bloqué tant qu'elle existe, en la
   montrant ; `releve.md` ne sait pas l'écrire.
-- **Import** : remplace tout l'historique, après confirmation.
+- **Import** : remplace tout l'historique et les réglages (ceux du
+  front-matter), après confirmation.
 - **Période des soldes** : elle court jusqu'à hier, pas seulement jusqu'au
   dernier jour complet. Une veille restée incomplète compte donc déjà en déficit,
   alors que la CLI arrête le calcul au dernier jour renseigné.

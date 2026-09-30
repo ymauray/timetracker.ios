@@ -15,6 +15,9 @@ struct PointageApp: App {
                     Tab("Historique", systemImage: "calendar") {
                         HistoriqueView(model: ecrans.historique)
                     }
+                    Tab("Réglages", systemImage: "gearshape") {
+                        ReglagesView(model: ecrans.reglages)
+                    }
                 }
             case let .failure(erreur):
                 ContentUnavailableView(
@@ -32,11 +35,13 @@ struct PointageApp: App {
 private struct Ecrans {
     let pointer: PointerModel
     let historique: HistoriqueModel
+    let reglages: ReglagesModel
 
     init() throws {
         let repository = JoursRepository(base: try Base.ouvrir())
         let horloge = HorlogeSysteme()
         pointer = PointerModel(repository: repository, horloge: horloge, preferences: .shared)
         historique = HistoriqueModel(repository: repository, horloge: horloge, preferences: .shared)
+        reglages = ReglagesModel(repository: repository, horloge: horloge, preferences: .shared)
     }
 }
