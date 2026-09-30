@@ -7,6 +7,7 @@ affiche les soldes de la semaine et du mois. Aucune donnée ne quitte l'appareil
 
 - [`AGENTS.md`](AGENTS.md) — les consignes de travail, à lire en premier
 - [`SPECS.md`](SPECS.md) — ce que l'on construit, les règles métier et les décisions prises
+- [`AVANCEMENT.md`](AVANCEMENT.md) — où on en est, et le plan de chaque étape
 
 ## Structure
 

@@ -4,6 +4,7 @@ Pointage, app iPhone native de pointage des heures de travail. Ce fichier ne
 contient que ce qui ne se déduit pas du code. Le reste est ailleurs :
 
 - [`SPECS.md`](SPECS.md) — ce que l'on construit et **pourquoi**, les règles métier, les décisions prises
+- [`AVANCEMENT.md`](AVANCEMENT.md) — **où on en est**, le plan de chaque étape et les décisions de mise en œuvre
 - [`README.md`](README.md) — structure du dépôt, compilation, livraison
 
 ## La référence, avant tout le reste
