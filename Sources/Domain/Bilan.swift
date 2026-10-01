@@ -1,7 +1,8 @@
 /// Les soldes tels que l'app les affiche, calculés sur les journées stockées.
 ///
-/// Décisions d'`AVANCEMENT.md` : la journée en cours (une ou trois heures)
-/// n'entre pas dans les soldes, qui se lisent « au soir d'hier » ; une journée
+/// Décisions d'`AVANCEMENT.md` : les soldes se lisent « au soir d'hier ».
+/// Aujourd'hui n'y entre jamais, même complet : deux pointages à midi se liraient
+/// sinon comme un départ, et le solde plongerait jusqu'à la reprise. Une journée
 /// passée restée incomplète n'y entre pas non plus, et elle est signalée. La
 /// période court jusqu'à hier : un jour ouvré passé sans journée complète compte
 /// en déficit, même après le dernier jour renseigné.
@@ -10,7 +11,7 @@ struct Bilan: Equatable, Sendable {
     let rapport: Calculateur.Rapport?
     /// Journées passées sans départ, les plus anciennes d'abord.
     let journeesIncompletes: [DateCivile]
-    /// Écart de la semaine ISO d'aujourd'hui, journée en cours exclue.
+    /// Écart de la semaine ISO d'aujourd'hui, aujourd'hui exclu.
     let ecartSemaine: Int
     /// Solde cumulé depuis le début de l'historique.
     let soldeCumule: Int
@@ -26,7 +27,7 @@ struct Bilan: Equatable, Sendable {
             case .enCours:
                 if jour.date < aujourdhui { incompletes.append(jour.date) }
             case let .complete(journee):
-                completes.append(journee)
+                if jour.date < aujourdhui { completes.append(journee) }
             }
         }
         journeesIncompletes = incompletes.sorted()

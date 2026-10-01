@@ -76,10 +76,17 @@ enum Calculateur {
         switch journee?.contenu {
         case .absence:
             return Jour(date: date, journee: journee, pauseDecomptee: 0, theorique: theorique, realise: theorique)
-        case let .travail(arrivee, pause, depart):
+        case let .travail(arrivee, pause, depart, absence):
             let pauseDecomptee = self.pauseDecomptee(arrivee: arrivee, pause: pause, depart: depart, reglages: reglages)
-            return Jour(date: date, journee: journee, pauseDecomptee: pauseDecomptee, theorique: theorique,
-                        realise: depart - arrivee - pauseDecomptee)
+            let travail = depart - arrivee - pauseDecomptee
+            let realise = switch absence {
+            // Demi-journée d'absence : la moitié du théorique, en minutes entières.
+            case .demi: travail + theorique / 2
+            // Maladie en cours de journée : complétée jusqu'à la journée entière.
+            case .maladie: max(travail, theorique)
+            default: travail
+            }
+            return Jour(date: date, journee: journee, pauseDecomptee: pauseDecomptee, theorique: theorique, realise: realise)
         case nil:
             return Jour(date: date, journee: nil, pauseDecomptee: 0, theorique: theorique, realise: 0)
         }

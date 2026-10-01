@@ -44,6 +44,12 @@ d'absence. Pas de seconde pause, pas de journée à cheval sur minuit.
 - Codes d'absence `Conges`, `Maladie`, `Ferie`, `RTT`, `Divers` (et `CP`, alias
   historique de `Conges` à accepter à l'import) : réalisé = théorique, aucun effet
   sur le solde.
+- Demi-journée d'absence (congé, RTT, après-midi férié) : code `Demi` avec les
+  heures de la partie travaillée ; réalisé = travail + théorique ÷ 2, arrondi à
+  la minute inférieure. `Demi` sans heures est une erreur.
+- Maladie survenue en cours de journée : code `Maladie` avec les heures de la
+  partie travaillée ; réalisé = travail, complété jusqu'au théorique s'il en
+  manque. Les autres codes refusent les heures.
 - Théorique = durée de la journée du lundi au vendredi, 0 le week-end. Un week-end
   travaillé compte donc entièrement en plus.
 - Un jour ouvré sans rien entre le premier et le dernier jour renseignés compte en

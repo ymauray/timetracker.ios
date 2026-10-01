@@ -50,8 +50,14 @@ que l'app.
 
 ## Décisions
 
-- **Journée en cours** (1 ou 3 pointages) : exclue des soldes, qui se lisent
-  « au soir d'hier » ; le réalisé en cours s'affiche à part.
+- **Aujourd'hui** : jamais compté dans les soldes, qui se lisent « au soir
+  d'hier », même une fois la journée complète ; il s'affiche dans le réalisé du
+  jour. Sans cela, deux pointages à midi se lisaient comme un départ et le solde
+  plongeait jusqu'à la reprise.
+- **Demi-journée et maladie en cours de journée** (livrées d'abord dans la CLI) :
+  `Demi` + heures = travail + moitié du théorique ; `Maladie` + heures = travail
+  complété jusqu'au théorique. Le bouton Pointer accepte de pointer sur ces deux
+  codes ; dans l'édition, « Absence partielle » les ajoute aux heures.
 - **Journée passée restée incomplète** : exclue du calcul et signalée.
 - **Export avec une journée incomplète** : bloqué tant qu'elle existe, en la
   montrant ; `releve.md` ne sait pas l'écrire.

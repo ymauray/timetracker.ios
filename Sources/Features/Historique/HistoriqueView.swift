@@ -99,8 +99,9 @@ private struct LigneJour: View {
     @ViewBuilder
     private var detail: some View {
         switch jour.statut {
-        case .travail:
-            Text(heures).foregroundStyle(.secondary).monospacedDigit()
+        case let .travail(absence):
+            Text(absence.map { "\(Affichage.absence($0)) · \(heures)" } ?? heures)
+                .foregroundStyle(.secondary).monospacedDigit()
         case let .absence(absence):
             Text(Affichage.absence(absence)).foregroundStyle(.secondary)
         case .enCours:

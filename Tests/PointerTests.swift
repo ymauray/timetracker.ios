@@ -55,6 +55,27 @@ struct JourStockeTests {
         #expect(jour.actionSuivante == nil)
     }
 
+    @Test func demiEtMaladieAcceptentLePointage() throws {
+        var demi = JourStocke(date: lundi, absence: .demi)
+        #expect(demi.etat == .enCours)
+        #expect(demi.actionSuivante == "Arrivée")
+        try demi.pointer(a: 480)
+        try demi.pointer(a: 720)
+        #expect(demi.etat == .complete(Journee(date: lundi, contenu: .travail(arrivee: 480, pause: nil, depart: 720, absence: .demi))))
+
+        var maladie = JourStocke(date: lundi, absence: .maladie)
+        #expect(maladie.etat == .complete(Journee(date: lundi, contenu: .absence(.maladie))))
+        try maladie.pointer(a: 470)
+        #expect(maladie.etat == .enCours)
+    }
+
+    @Test func realiseEnCoursDUneDemiJournee() {
+        // 4h06 de demi-journée dès le matin, puis le travail s'y ajoute.
+        #expect(JourStocke(date: lundi, absence: .demi).realise(a: 600, reglages: .defaut) == 246)
+        #expect(JourStocke(date: lundi, heures: [480], absence: .demi).realise(a: 600, reglages: .defaut) == 366)
+        #expect(JourStocke(date: lundi, heures: [480, 720], absence: .demi).realise(a: 800, reglages: .defaut) == 486)
+    }
+
     @Test func annulerRetireLeDernierPointage() {
         var jour = JourStocke(date: lundi, heures: [480, 720, 750])
         jour.annulerDernierPointage()
@@ -91,6 +112,20 @@ struct BilanTests {
         )
         #expect(bilan.journeesIncompletes == [mardi])
         #expect(bilan.ecartSemaine == -492)
+    }
+
+    /// Deux pointages à midi se liraient comme un départ : aujourd'hui n'entre
+    /// jamais dans les soldes, même complet.
+    @Test func aujourdhuiNeComptePasMemeComplet() {
+        let bilan = Bilan(
+            jours: [
+                JourStocke(date: lundi, heures: [480, 720, 750, 1002]),
+                JourStocke(date: mardi, heures: [480, 720]),
+            ],
+            aujourdhui: mardi, reglages: .defaut
+        )
+        #expect(bilan.ecartSemaine == 0)
+        #expect(bilan.soldeCumule == 0)
     }
 
     @Test func laJourneeEnCoursNeComptePas() {

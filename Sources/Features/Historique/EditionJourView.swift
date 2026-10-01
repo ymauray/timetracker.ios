@@ -30,9 +30,18 @@ struct EditionJourView: View {
                         ChampHeure(titre: "Début pause", minutes: $edition.debutPause, parDefaut: 12 * 60, ouvert: $champOuvert)
                         ChampHeure(titre: "Fin pause", minutes: $edition.finPause, parDefaut: 12 * 60 + 30, ouvert: $champOuvert)
                     }
+                    Section {
+                        Picker("Absence partielle", selection: $edition.absencePartielle) {
+                            Text("Aucune").tag(Absence?.none)
+                            Text(Affichage.absence(.demi)).tag(Absence?.some(.demi))
+                            Text(Affichage.absence(.maladie)).tag(Absence?.some(.maladie))
+                        }
+                    } footer: {
+                        Text("Demi-journée : les heures travaillées comptent, plus la moitié de la journée. Maladie : la journée est complétée jusqu'à la journée entière.")
+                    }
                 case .absence:
                     Picker("Motif", selection: $edition.absence) {
-                        ForEach(Absence.allCases, id: \.self) { absence in
+                        ForEach(Absence.allCases.filter { $0 != .demi }, id: \.self) { absence in
                             Text(Affichage.absence(absence)).tag(absence)
                         }
                     }

@@ -127,7 +127,7 @@ enum ReleveParser {
             var absence: Absence?
             if !absenceTexte.isEmpty {
                 guard let code = lireAbsence(absenceTexte) else {
-                    erreur("Code absence inconnu '\(absenceTexte)' (valeurs valides : Conges ou CP, Maladie, Ferie, RTT, Divers).")
+                    erreur("Code absence inconnu '\(absenceTexte)' (valeurs valides : Conges ou CP, Maladie, Ferie, RTT, Divers, Demi).")
                     continue
                 }
                 absence = code
@@ -188,6 +188,7 @@ enum ReleveParser {
         case "FERIE": .ferie
         case "RTT": .rtt
         case "DIVERS": .divers
+        case "DEMI": .demi
         default: nil
         }
     }

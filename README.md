@@ -36,8 +36,10 @@ l'App Store. Pour l'essayer sans invitation, la compiler depuis les sources
   que la CLI lit tel quel ; l'import reprend un `releve.md` existant et
   remplace l'historique après confirmation.
 
-Les soldes se lisent au soir d'hier : la journée en cours n'y entre qu'une
-fois complète.
+Les soldes se lisent au soir d'hier : aujourd'hui n'y entre jamais, il se lit
+dans le réalisé du jour. Une demi-journée de congé ou une maladie survenue en
+cours de journée se saisissent avec les heures travaillées et le motif
+(« Absence partielle » dans l'édition d'une journée).
 
 ## Structure
 

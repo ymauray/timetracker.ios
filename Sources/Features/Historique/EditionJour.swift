@@ -12,14 +12,23 @@ struct EditionJour: Equatable, Sendable {
     var debutPause: Int?
     var finPause: Int?
     var depart: Int?
+    /// Le motif d'une journée d'absence entière.
     var absence: Absence
+    /// En mode travail : demi-journée ou maladie survenue en cours de journée.
+    var absencePartielle: Absence?
 
     /// Reprend une journée stockée ; une journée en cours garde ses heures, lues
     /// comme le bouton les lit (la deuxième est un départ sauf s'il y en a trois).
     init(_ jour: JourStocke) {
         date = jour.date
-        mode = jour.absence == nil ? .travail : .absence
-        absence = jour.absence ?? .conges
+        if let code = jour.absence, jour.heures.isEmpty, code != .demi {
+            mode = .absence
+            absence = code
+        } else {
+            mode = .travail
+            absence = .conges
+            absencePartielle = jour.absence
+        }
         let h = jour.heures
         switch h.count {
         case 1: arrivee = h[0]
@@ -35,7 +44,9 @@ struct EditionJour: Equatable, Sendable {
         case .absence:
             ValidationJournee.valider(arrivee: nil, debutPause: nil, finPause: nil, depart: nil, absence: absence)
         case .travail:
-            ValidationJournee.valider(arrivee: arrivee, debutPause: debutPause, finPause: finPause, depart: depart, absence: nil)
+            ValidationJournee.valider(
+                arrivee: arrivee, debutPause: debutPause, finPause: finPause, depart: depart, absence: absencePartielle
+            )
         }
     }
 

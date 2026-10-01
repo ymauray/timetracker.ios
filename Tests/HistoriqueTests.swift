@@ -35,7 +35,7 @@ struct HistoriqueTests {
         )
         let jours = Dictionary(uniqueKeysWithValues: historique.semaines[0].jours.map { ($0.date, $0) })
 
-        #expect(jours[lundi]?.statut == .travail)
+        #expect(jours[lundi]?.statut == .travail(nil))
         #expect(jours[lundi]?.ecart == 0)
         #expect(jours[mardi]?.statut == .sansDepart)
         #expect(jours[mardi]?.ecart == -492)
@@ -70,6 +70,18 @@ struct EditionJourTests {
         #expect(edition.resultat == nil)
         edition.depart = 1020
         #expect(edition.resultat == JourStocke(date: lundi, heures: [480, 720, 750, 1020]))
+    }
+
+    @Test func absencePartielle() {
+        var edition = EditionJour(JourStocke(date: lundi, heures: [480, 720]))
+        edition.absencePartielle = .demi
+        #expect(edition.resultat == JourStocke(date: lundi, heures: [480, 720], absence: .demi))
+
+        // Une demi-journée stockée sans heures se rouvre en mode travail.
+        let reprise = EditionJour(JourStocke(date: lundi, absence: .demi))
+        #expect(reprise.mode == .travail)
+        #expect(reprise.absencePartielle == .demi)
+        #expect(reprise.messageErreur == "Une demi-journée demande les heures de la partie travaillée.")
     }
 
     @Test func absence() {
