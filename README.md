@@ -92,10 +92,8 @@ Deux pipelines, qui ne valident pas la même chose :
   TestFlight. Les fusions sur `main` ne livrent rien ; une version part sur
   TestFlight quand `main` est amenée sur `pre-release`.
 
-Pour livrer, amener `main` sur `pre-release` en avance rapide. Un simple
-déplacement de branche, sans nouveau commit, n'a pas toujours déclenché de
-build : le lancer alors à la main (« Start Build » dans App Store Connect ou
-dans Xcode).
+Pour livrer, amener `main` sur `pre-release` en avance rapide : Xcode Cloud
+démarre le build tout seul.
 
 Le numéro de build vient d'Xcode Cloud, pas de `project.yml` : le script de
 post-clone y reporte `$CI_BUILD_NUMBER` avant de régénérer le projet.
