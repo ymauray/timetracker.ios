@@ -48,6 +48,7 @@ enum Affichage {
         case .ferie: "Férié"
         case .rtt: "RTT"
         case .divers: "Divers"
+        case .demi: "Demi-journée"
         }
     }
 

@@ -57,13 +57,13 @@ final class ParcoursTests: XCTestCase {
         XCTAssertTrue(app.buttons["Départ : 17h15"].exists)
         enregistrer.tap()
 
-        // 8h00–17h15, 30 min de pause décomptées : 8h45 pour 8h12.
-        XCTAssertTrue(app.staticTexts["+0h33"].waitForExistence(timeout: 2))
-
         // Arrivée et départ : deux heures, le bouton propose encore une fin de
         // pause, qui ferait du départ un début de pause (voir SPECS.md).
+        // 8h00–17h15, 30 min de pause décomptées : 8h45. Aujourd'hui n'entre pas
+        // dans les soldes, il se lit dans le réalisé du jour.
         app.tabBars.buttons["Pointer"].tap()
         XCTAssertEqual(app.buttons["bouton-pointer"].label, "Pointer : Fin de pause")
+        XCTAssertTrue(app.staticTexts["Réalisé aujourd'hui : 8h45"].waitForExistence(timeout: 2))
     }
 
     func testReglerUneDuree() {

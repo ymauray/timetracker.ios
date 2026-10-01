@@ -14,10 +14,11 @@ enum ReleveWriter {
         for journee in journees.sorted(by: { $0.date < $1.date }) {
             let date = Formats.dateReleve(journee.date)
             switch journee.contenu {
-            case let .travail(arrivee, pause, depart):
+            case let .travail(arrivee, pause, depart, absence):
                 let debut = pause.map { Formats.heureReleve($0.lowerBound) } ?? ""
                 let fin = pause.map { Formats.heureReleve($0.upperBound) } ?? ""
-                lignes.append("|\(date)|\(Formats.heureReleve(arrivee))|\(debut)|\(fin)|\(Formats.heureReleve(depart))||")
+                let code = absence?.rawValue ?? ""
+                lignes.append("|\(date)|\(Formats.heureReleve(arrivee))|\(debut)|\(fin)|\(Formats.heureReleve(depart))|\(code)|")
             case let .absence(absence):
                 lignes.append("|\(date)|||||\(absence.rawValue)|")
             }

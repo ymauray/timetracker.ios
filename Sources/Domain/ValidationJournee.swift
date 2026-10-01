@@ -4,6 +4,7 @@
 enum ValidationJournee {
     enum Erreur: Error, Equatable, Sendable {
         case horairesSurAbsence
+        case demiSansHoraires
         case arriveeEtDepartObligatoires
         case departAvantArrivee(depart: Int, arrivee: Int)
         case pauseIncomplete
@@ -15,6 +16,8 @@ enum ValidationJournee {
             switch self {
             case .horairesSurAbsence:
                 "Jour marque en absence mais des horaires sont renseignes : videz les colonnes horaires ou retirez le code absence."
+            case .demiSansHoraires:
+                "Le code Demi demande les horaires de la demi-journee travaillee."
             case .arriveeEtDepartObligatoires:
                 "Arrivee et Depart sont obligatoires pour un jour travaille (ou renseignez un code Absence)."
             case let .departAvantArrivee(depart, arrivee):
@@ -33,6 +36,8 @@ enum ValidationJournee {
             switch self {
             case .horairesSurAbsence:
                 "Une journée d'absence ne peut pas avoir d'horaires."
+            case .demiSansHoraires:
+                "Une demi-journée demande les heures de la partie travaillée."
             case .arriveeEtDepartObligatoires:
                 "Renseignez l'arrivée et le départ, ou choisissez une absence."
             case .departAvantArrivee:
@@ -52,21 +57,21 @@ enum ValidationJournee {
     static func valider(
         arrivee: Int?, debutPause: Int?, finPause: Int?, depart: Int?, absence: Absence?
     ) -> Result<Journee.Contenu, Erreur> {
-        if let absence {
-            guard arrivee == nil, debutPause == nil, finPause == nil, depart == nil else {
-                return .failure(.horairesSurAbsence)
-            }
-            return .success(.absence(absence))
+        let horairesSaisis = arrivee != nil || debutPause != nil || finPause != nil || depart != nil
+        if let absence, !horairesSaisis {
+            return absence == .demi ? .failure(.demiSansHoraires) : .success(.absence(absence))
         }
+        // Seules une demi-journée et une maladie en cours de journée portent des heures.
+        if let absence, !absence.porteDesHeures { return .failure(.horairesSurAbsence) }
         guard let arrivee, let depart else { return .failure(.arriveeEtDepartObligatoires) }
         guard depart > arrivee else { return .failure(.departAvantArrivee(depart: depart, arrivee: arrivee)) }
         switch (debutPause, finPause) {
         case (nil, nil):
-            return .success(.travail(arrivee: arrivee, pause: nil, depart: depart))
+            return .success(.travail(arrivee: arrivee, pause: nil, depart: depart, absence: absence))
         case let (debut?, fin?):
             guard fin > debut else { return .failure(.finPauseAvantDebut(fin: fin, debut: debut)) }
             guard debut >= arrivee, fin <= depart else { return .failure(.pauseHorsJournee) }
-            return .success(.travail(arrivee: arrivee, pause: debut...fin, depart: depart))
+            return .success(.travail(arrivee: arrivee, pause: debut...fin, depart: depart, absence: absence))
         default:
             return .failure(.pauseIncomplete)
         }

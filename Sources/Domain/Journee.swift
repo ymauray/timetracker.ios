@@ -15,13 +15,19 @@ enum Absence: String, CaseIterable, Sendable {
     case ferie = "Ferie"
     case rtt = "RTT"
     case divers = "Divers"
+    /// Demi-journée d'absence : s'écrit avec les heures de la partie travaillée.
+    case demi = "Demi"
+
+    /// Les codes qui acceptent les heures de la partie travaillée.
+    var porteDesHeures: Bool { self == .demi || self == .maladie }
 }
 
-/// Une journée complète et valide : quatre heures (en minutes depuis minuit),
-/// pause facultative, ou un code d'absence.
+/// Une journée complète et valide : des heures (en minutes depuis minuit),
+/// pause facultative, ou un code d'absence. Une demi-journée (`Demi`) ou une
+/// maladie survenue en cours de journée portent les deux.
 struct Journee: Equatable, Sendable {
     enum Contenu: Equatable, Sendable {
-        case travail(arrivee: Int, pause: ClosedRange<Int>?, depart: Int)
+        case travail(arrivee: Int, pause: ClosedRange<Int>?, depart: Int, absence: Absence? = nil)
         case absence(Absence)
     }
 

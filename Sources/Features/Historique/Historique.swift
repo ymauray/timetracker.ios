@@ -15,9 +15,11 @@ struct Historique: Equatable, Sendable {
 
     struct Jour: Equatable, Sendable, Identifiable {
         enum Statut: Equatable, Sendable {
-            case travail
+            /// Des heures, avec le code d'une demi-journée ou d'une maladie en
+            /// cours de journée le cas échéant.
+            case travail(Absence?)
             case absence(Absence)
-            /// Aujourd'hui, une ou trois heures.
+            /// Aujourd'hui, journée incomplète.
             case enCours
             /// Un jour passé, une ou trois heures : il manque le départ.
             case sansDepart
@@ -27,8 +29,8 @@ struct Historique: Equatable, Sendable {
 
         let stocke: JourStocke
         let statut: Statut
-        /// Nil pour la journée en cours, qui ne compte pas encore. Une journée sans
-        /// départ compte en déficit, comme un jour non renseigné.
+        /// Nil pour aujourd'hui, qui ne compte pas encore. Une journée sans départ
+        /// compte en déficit, comme un jour non renseigné.
         let ecart: Int?
 
         var id: DateCivile { stocke.date }
@@ -54,7 +56,10 @@ struct Historique: Equatable, Sendable {
             case .vide: .nonRenseigne
             case .enCours: date < aujourdhui ? .sansDepart : .enCours
             case let .complete(journee):
-                if case let .absence(absence) = journee.contenu { .absence(absence) } else { .travail }
+                switch journee.contenu {
+                case let .absence(absence): .absence(absence)
+                case let .travail(_, _, _, absence): .travail(absence)
+                }
             }
             return Jour(stocke: stocke, statut: statut, ecart: calcule?.ecart)
         }
