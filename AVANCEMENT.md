@@ -41,6 +41,20 @@ tant qu'une journée passée n'a pas de départ ; import avec les erreurs de la 
 ligne par ligne, puis confirmation. L'export de chaque fixture a été relu par la
 CLI, soldes identiques.
 
+**Après le plan** :
+- tests d'interface XCUITest (`UITests/`), l'app lancée avec `-tests-interface`
+  sur une base vide et une horloge arrêtée (#7) ;
+- minutes de 5 en 5 dans tous les sélecteurs (#8) ;
+- bonnes pratiques GitHub (protection de `main`, squash seul, Dependabot,
+  sécurité, fichiers communautaires) et site GitHub Pages avec la politique de
+  confidentialité (#9) ;
+- demi-journée d'absence (`Demi`) et maladie en cours de journée, d'abord dans
+  la CLI (ymauray/timetracker#10), soldes sans aujourd'hui (#10).
+
+**Où on en est** (2 octobre 2026) : la version 1.0.0 est sur TestFlight, à
+`4a554ef`, et Yannick la teste au quotidien sur son téléphone. Les retours de cet
+usage réel sont la prochaine source de travail.
+
 ## À faire
 
 ### 7. Plus tard
